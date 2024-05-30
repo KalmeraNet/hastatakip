@@ -13,7 +13,7 @@ import {
   MenuTarget,
   rem,
 } from "@mantine/core"
-import { IconChevronLeft, IconKey, IconLogout } from "@tabler/icons-react"
+import { IconChevronLeft, IconKey, IconLogout, IconUser } from "@tabler/icons-react"
 import Link from "next/link"
 import React from "react"
 
@@ -81,7 +81,7 @@ const Header = (props: Props) => {
             <Link href="/profile" style={{ textDecoration: "none" }}>
               <MenuItem
                 leftSection={
-                  <IconKey style={{ width: rem(14), height: rem(14) }} />
+                  <IconUser style={{ width: rem(14), height: rem(14) }} />
                 }
               >
                 Profile

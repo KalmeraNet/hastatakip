@@ -3,15 +3,13 @@ export type GetUserOutputParam = { id: string, fullName: string, role: string, i
 
 export const getServerUser: (input: GetUserInputParam) => Promise<GetUserOutputParam> = async (input) => {
     return new Promise<GetUserOutputParam>((resolve, reject) => {
-        fetch('https://dummyjson.com/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
+        let fd = new FormData()
+        fd.append("id", input.id);
 
-                username: 'kminchelle',
-                password: '0lelplR',
-                expiresInMins: 30, // optional, defaults to 60
-            })
+        fetch('https://localhost:7041/v1/getServerUser', {
+            method: 'POST',
+            headers: { 'Content-Type': 'multipart/form-data' },
+            body: fd
         })
             .then(async res => {
                 var vl = await res.json();

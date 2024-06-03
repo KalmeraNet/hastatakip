@@ -1,34 +1,32 @@
 "use client"
 import { createContext, useContext, useEffect, useState } from "react"
-import { GetUserOutputParam, getServerUser } from "."
+import { GetServerUserResult, UserFunctionsApi } from "./api"
+import { userApi } from "."
 
-const _user = createContext<GetUserOutputParam>({
+const _user = createContext<GetServerUserResult>({
   id: "",
   fullName: "",
   initial: "",
   role: "",
-  password: "",
 })
 
 export function UserProvider({ children }: { children: any }) {
-  const [user, setUser] = useState<GetUserOutputParam>({
+  const [user, setUser] = useState<GetServerUserResult>({
     id: "",
     fullName: "",
     initial: "",
     role: "",
-    password: "",
   })
 
   useEffect(() => {
     if (user.id == "") {
-      getServerUser({ id: "andre" }).then((o) => {
+      userApi.getServerUser({ id: "andre" }).then((o) => {
         setUser((x) => ({
           ...x,
           id: o.id,
           fullName: o.fullName,
           initial: o.initial,
           role: o.role,
-          password: o.password,
         }))
       })
     }
@@ -40,15 +38,3 @@ export function UserProvider({ children }: { children: any }) {
 export function useUser() {
   return useContext(_user)
 }
-
-// const _user: { user: GetUserOutputParam | null } = { user: null };
-
-// export const setUser = (usr: GetUserOutputParam | null) => {
-//     console.log('Set')
-//     _user.user = usr;
-// }
-
-// export const getUser = () => {
-//     console.log('aaa: ' + (_user.user?.id ?? 'XXX'))
-//     return _user.user;
-// };

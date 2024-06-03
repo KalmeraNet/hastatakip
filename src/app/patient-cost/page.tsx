@@ -3,10 +3,10 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import React, { useEffect, useState } from "react"
 import { Stack, Text, Box, Input } from "@mantine/core"
-import { GetProjectsOutputParam, getProjects } from "@/server"
 import { useUser } from "@/server/userContext"
 import ProjectsItem from "@/components/items/projectsItem"
 import { IconSearch } from "@tabler/icons-react"
+import { Project, projectApi } from "@/server"
 
 /*
 Projects
@@ -17,10 +17,11 @@ GetProjectsOutputParam
 type Props = {}
 
 const HastaMasraf = (props: Props) => {
-  const [projects, setProjects] = useState<GetProjectsOutputParam[]>([])
+  const [projects, setProjects] = useState<Project[]>([])
   const user = useUser()
   useEffect(() => {
-    getProjects({ userId: user.id }).then((data) => {
+    projectApi.getServerProject({userId: user.id})
+    .then((data) => {
       setProjects(data)
     })
   }, [user.id])
@@ -49,11 +50,11 @@ const HastaMasraf = (props: Props) => {
         {projects.map((o) => {
           return (
             <ProjectsItem
-              key={o.id}
-              id={o.id}
-              firstLine={o.name}
-              secondLine={o.title}
-              link={"/patient-cost/" + o.id}
+              key={o.id ?? 0}
+              id={o.id ?? 0}
+              firstLine={o.name ?? ''}
+              secondLine={o.title ?? ''}
+              link={"/patient-cost/" + (o.id ?? 0)}
             />
           )
         })}

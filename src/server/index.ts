@@ -11,7 +11,7 @@
  * Do not edit the file manually.
  */
 
-import { FormFunctionsApi, ProjectFunctionsApi, UserFunctionsApi } from "./api";
+import { FormFunctionsApi, FormsFunctionsApi, ListFunctionsApi, LocationFunctionsApi, ProjectFunctionsApi, UserFunctionsApi } from "./api";
 import { Configuration } from "./configuration";
 
 export * from "./api";
@@ -19,5 +19,8 @@ export * from "./configuration";
 
 const defaultConfig = new Configuration({ basePath: 'http://localhost:7400' })
 export const userApi = new UserFunctionsApi(defaultConfig);
+export const projectApi = new ProjectFunctionsApi(defaultConfig);
 export const formApi = new FormFunctionsApi(defaultConfig);
-export const projectApi = new ProjectFunctionsApi(defaultConfig); 
+export const formsApi = new FormsFunctionsApi(defaultConfig);
+export const listApi = new ListFunctionsApi(defaultConfig);
+export const locationApi = new LocationFunctionsApi(defaultConfig);

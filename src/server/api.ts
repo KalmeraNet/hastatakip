@@ -80,125 +80,102 @@ export class RequiredError extends Error {
 /**
  * 
  * @export
- * @interface GetServerFormResult
+ * @interface FormRequest
  */
-export interface GetServerFormResult {
+export interface FormRequest {
     /**
      * 
      * @type {string}
-     * @memberof GetServerFormResult
+     * @memberof FormRequest
+     */
+    id?: string;
+}
+/**
+ * 
+ * @export
+ * @interface FormResult
+ */
+export interface FormResult {
+    /**
+     * 
+     * @type {string}
+     * @memberof FormResult
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetServerFormResult
+     * @memberof FormResult
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetServerFormResult
+     * @memberof FormResult
      */
     title?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetServerFormResult
+     * @memberof FormResult
      */
     tip?: string;
     /**
      * 
      * @type {number}
-     * @memberof GetServerFormResult
+     * @memberof FormResult
      */
     price?: number;
     /**
      * 
      * @type {string}
-     * @memberof GetServerFormResult
+     * @memberof FormResult
      */
     date?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof GetServerFormResult
+     * @memberof FormResult
      */
     status?: boolean;
 }
 /**
  * 
  * @export
- * @interface GetServerFormsResult
+ * @interface FormsRequest
  */
-export interface GetServerFormsResult {
+export interface FormsRequest {
     /**
      * 
      * @type {string}
-     * @memberof GetServerFormsResult
+     * @memberof FormsRequest
      */
     id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerFormsResult
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerFormsResult
-     */
-    title?: string;
 }
 /**
  * 
  * @export
- * @interface GetServerListResult
+ * @interface FormsResult
  */
-export interface GetServerListResult {
+export interface FormsResult {
     /**
      * 
      * @type {string}
-     * @memberof GetServerListResult
+     * @memberof FormsResult
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetServerListResult
+     * @memberof FormsResult
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetServerListResult
+     * @memberof FormsResult
      */
     title?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerListResult
-     */
-    tip?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerListResult
-     */
-    price?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerListResult
-     */
-    date?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerListResult
-     */
-    costType?: string;
 }
 /**
  * 
@@ -272,6 +249,68 @@ export interface GetServerUserResult {
 /**
  * 
  * @export
+ * @interface ListRequest
+ */
+export interface ListRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRequest
+     */
+    id?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ListResult
+ */
+export interface ListResult {
+    /**
+     * 
+     * @type {string}
+     * @memberof ListResult
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListResult
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListResult
+     */
+    title?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListResult
+     */
+    tip?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListResult
+     */
+    price?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListResult
+     */
+    date?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListResult
+     */
+    costType?: string;
+}
+/**
+ * 
+ * @export
  * @interface Project
  */
 export interface Project {
@@ -315,11 +354,11 @@ export const FormFunctionsApiFetchParamCreator = function (configuration?: Confi
     return {
         /**
          * 
-         * @param {GetServerFormResult} body 
+         * @param {FormRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerForm(body: GetServerFormResult, options: any = {}): FetchArgs {
+        getServerForm(body: FormRequest, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body', 'Required parameter body was null or undefined when calling getServerForm.');
@@ -336,7 +375,7 @@ export const FormFunctionsApiFetchParamCreator = function (configuration?: Confi
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             localVarUrlObj.search = null;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"GetServerFormResult" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"FormRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -355,11 +394,11 @@ export const FormFunctionsApiFp = function (configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {GetServerFormResult} body 
+         * @param {FormRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerForm(body: GetServerFormResult, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GetServerFormResult> {
+        getServerForm(body: FormRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<FormResult> {
             const localVarFetchArgs = FormFunctionsApiFetchParamCreator(configuration).getServerForm(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -382,11 +421,11 @@ export const FormFunctionsApiFactory = function (configuration?: Configuration, 
     return {
         /**
          * 
-         * @param {GetServerFormResult} body 
+         * @param {FormRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerForm(body: GetServerFormResult, options?: any) {
+        getServerForm(body: FormRequest, options?: any) {
             return FormFunctionsApiFp(configuration).getServerForm(body, options)(fetch, basePath);
         },
     };
@@ -401,12 +440,12 @@ export const FormFunctionsApiFactory = function (configuration?: Configuration, 
 export class FormFunctionsApi extends BaseAPI {
     /**
      * 
-     * @param {GetServerFormResult} body 
+     * @param {FormRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FormFunctionsApi
      */
-    public getServerForm(body: GetServerFormResult, options?: any) {
+    public getServerForm(body: FormRequest, options?: any) {
         return FormFunctionsApiFp(this.configuration).getServerForm(body, options)(this.fetch, this.basePath);
     }
 
@@ -419,11 +458,11 @@ export const FormsFunctionsApiFetchParamCreator = function (configuration?: Conf
     return {
         /**
          * 
-         * @param {GetServerFormsResult} body 
+         * @param {FormsRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerForms(body: GetServerFormsResult, options: any = {}): FetchArgs {
+        getServerForms(body: FormsRequest, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body', 'Required parameter body was null or undefined when calling getServerForms.');
@@ -440,7 +479,7 @@ export const FormsFunctionsApiFetchParamCreator = function (configuration?: Conf
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             localVarUrlObj.search = null;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"GetServerFormsResult" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"FormsRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -459,11 +498,11 @@ export const FormsFunctionsApiFp = function (configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {GetServerFormsResult} body 
+         * @param {FormsRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerForms(body: GetServerFormsResult, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GetServerFormsResult> {
+        getServerForms(body: FormsRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<FormsResult> {
             const localVarFetchArgs = FormsFunctionsApiFetchParamCreator(configuration).getServerForms(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -486,11 +525,11 @@ export const FormsFunctionsApiFactory = function (configuration?: Configuration,
     return {
         /**
          * 
-         * @param {GetServerFormsResult} body 
+         * @param {FormsRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerForms(body: GetServerFormsResult, options?: any) {
+        getServerForms(body: FormsRequest, options?: any) {
             return FormsFunctionsApiFp(configuration).getServerForms(body, options)(fetch, basePath);
         },
     };
@@ -505,12 +544,12 @@ export const FormsFunctionsApiFactory = function (configuration?: Configuration,
 export class FormsFunctionsApi extends BaseAPI {
     /**
      * 
-     * @param {GetServerFormsResult} body 
+     * @param {FormsRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FormsFunctionsApi
      */
-    public getServerForms(body: GetServerFormsResult, options?: any) {
+    public getServerForms(body: FormsRequest, options?: any) {
         return FormsFunctionsApiFp(this.configuration).getServerForms(body, options)(this.fetch, this.basePath);
     }
 
@@ -615,11 +654,11 @@ export const ListFunctionsApiFetchParamCreator = function (configuration?: Confi
     return {
         /**
          * 
-         * @param {GetServerListResult} body 
+         * @param {ListRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerList(body: GetServerListResult, options: any = {}): FetchArgs {
+        getServerList(body: ListRequest, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body', 'Required parameter body was null or undefined when calling getServerList.');
@@ -636,7 +675,7 @@ export const ListFunctionsApiFetchParamCreator = function (configuration?: Confi
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             localVarUrlObj.search = null;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"GetServerListResult" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"ListRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -655,11 +694,11 @@ export const ListFunctionsApiFp = function (configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {GetServerListResult} body 
+         * @param {ListRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerList(body: GetServerListResult, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GetServerListResult> {
+        getServerList(body: ListRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ListResult> {
             const localVarFetchArgs = ListFunctionsApiFetchParamCreator(configuration).getServerList(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -682,11 +721,11 @@ export const ListFunctionsApiFactory = function (configuration?: Configuration, 
     return {
         /**
          * 
-         * @param {GetServerListResult} body 
+         * @param {ListRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerList(body: GetServerListResult, options?: any) {
+        getServerList(body: ListRequest, options?: any) {
             return ListFunctionsApiFp(configuration).getServerList(body, options)(fetch, basePath);
         },
     };
@@ -701,12 +740,12 @@ export const ListFunctionsApiFactory = function (configuration?: Configuration, 
 export class ListFunctionsApi extends BaseAPI {
     /**
      * 
-     * @param {GetServerListResult} body 
+     * @param {ListRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListFunctionsApi
      */
-    public getServerList(body: GetServerListResult, options?: any) {
+    public getServerList(body: ListRequest, options?: any) {
         return ListFunctionsApiFp(this.configuration).getServerList(body, options)(this.fetch, this.basePath);
     }
 

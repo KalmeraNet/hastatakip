@@ -2,9 +2,9 @@
 import Footer from "@/components/footer"
 import FormItem from "@/components/items/formItem"
 import Header from "@/components/header"
-import { GetFormOutputParam, getForm } from "@/server"
-import { useUser } from "@/server/userContext"
 import React, { useEffect, useState } from "react"
+import { FormResult, formApi } from "@/server"
+import { useUser } from "@/server/userContext"
 
 /*
 Form
@@ -15,11 +15,11 @@ GetFormOutputParam
 type Props = { params: { formId: string } }
 
 const Forms = (props: Props) => {
-  const [form, setForm] = useState<GetFormOutputParam>()
+  const [form, setForm] = useState<FormResult[]>([])
   const user = useUser()
   useEffect(() => {
-    getForm({
-      userId: user.id,
+    formApi.getServerForm({
+      id: user.id,
       formId: parseInt("0" + props.params.formId, 10),
     }).then((data) => {
       setForm(data)

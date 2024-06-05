@@ -4,9 +4,9 @@ import Header from "@/components/header"
 import React, { useEffect, useState } from "react"
 import { Stack, Text, Box, Input } from "@mantine/core"
 import ListItem from "@/components/items/projectsItem"
-import { GetLocationsOutputParam, getLocations } from "@/server"
-import { useUser } from "@/server/userContext"
 import { IconSearch } from "@tabler/icons-react"
+import { GetServerLocationResult, locationApi } from "@/server"
+import { useUser } from "@/server/userContext"
 
 /*
 Locations
@@ -17,11 +17,11 @@ GetLocationsOutputParam
 type Props = { params: { projectId: string } }
 
 const Locations = (props: Props) => {
-  const [locations, setLocations] = useState<GetLocationsOutputParam[]>([])
+  const [locations, setLocations] = useState<GetServerLocationResult[]>([])
   const user = useUser()
   useEffect(() => {
-    getLocations({
-      userId: user.id,
+    locationApi.getServerLocation({
+      id: user.id,
       projectId: parseInt("0" + props.params.projectId, 10),
     }).then((data) => {
       setLocations(data)

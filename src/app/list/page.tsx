@@ -2,7 +2,7 @@
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import ListItem from "@/components/items/listItem"
-import { GetListOutputParam, getList } from "@/server"
+import { ListResult, listApi } from "@/server"
 import { useUser } from "@/server/userContext"
 import { Text } from "@mantine/core"
 import React, { useEffect, useState } from "react"
@@ -16,11 +16,11 @@ GetListOutputParam
 type Props = {}
 
 const List = (props: Props) => {
-  const [list, setList] = useState<GetListOutputParam[]>([])
+  const [list, setList] = useState<ListResult[]>([])
   const user = useUser()
   useEffect(() => {
-    getList({
-      userId: user.id,
+    listApi.getServerList({
+      id: user.id,
     }).then((data) => {
       setList(data)
     })
@@ -29,7 +29,7 @@ const List = (props: Props) => {
   return (
     <>
       {/* Header */}
-      <Header title="Lists" link="/" />
+      <Header title="Lists" link="/"  />
 
       {/* Body */}
       <Text size="xl" style={{ marginTop: "1rem", marginLeft: "2rem" }}>

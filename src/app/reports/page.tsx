@@ -2,7 +2,7 @@
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import RaporItem from "@/components/items/raporItem"
-import { GetListOutputParam, getList } from "@/server"
+import { ListResult, listApi } from "@/server"
 import { useUser } from "@/server/userContext"
 import { Text } from "@mantine/core"
 import React, { useEffect, useState } from "react"
@@ -10,11 +10,11 @@ import React, { useEffect, useState } from "react"
 type Props = {}
 
 const Reports = (props: Props) => {
-  const [list, setList] = useState<GetListOutputParam[]>([])
+  const [list, setList] = useState<ListResult[]>([])
   const user = useUser()
   useEffect(() => {
-    getList({
-      userId: user.id,
+    listApi.getServerList({
+      id: user.id,
     }).then((data) => {
       setList(data)
     })

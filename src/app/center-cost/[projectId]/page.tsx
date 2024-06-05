@@ -23,9 +23,9 @@ import {
   ComboboxChevron,
   Button,
 } from "@mantine/core"
-import { GetFormsOutputParam, getForms } from "@/server"
-import { useUser } from "@/server/userContext"
 import Link from "next/link"
+import { FormsResult, formsApi } from "@/server"
+import { useUser } from "@/server/userContext"
 
 /*
 Forms
@@ -40,16 +40,14 @@ type Props = {
 const tip = { konak: "Konaklama", ulas: "Transport" }
 
 const MasrafTipi = (props: Props) => {
-  const [forms, setForms] = useState<GetFormsOutputParam[]>([])
+const [forms, setForms] = useState<FormsResult>()
   const user = useUser()
   useEffect(() => {
-    getForms({
-      userId: user.id,
-      formsId: parseInt("0" + props.formsId, 10),
-    }).then((data) => {
+    formsApi.getServerForms({id: "a"})
+    .then((data) => {
       setForms(data)
     })
-  }, [user.id, props.formsId])
+  }, [user.id])
 
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),

@@ -3,10 +3,10 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import React, { useEffect, useState } from "react"
 import { Stack, Text, Box, Input } from "@mantine/core"
-import { GetProjectsOutputParam, getProjects } from "@/server"
-import { useUser } from "@/server/userContext"
 import ProjectsItem from "@/components/items/projectsItem"
 import { IconSearch } from "@tabler/icons-react"
+import { useUser } from "@/server/userContext"
+import { Project, projectApi } from "@/server"
 
 /*
 Projects
@@ -17,10 +17,10 @@ GetProjectsOutputParam
 type Props = {}
 
 const ScMasraf = (props: Props) => {
-  const [projects, setProjects] = useState<GetProjectsOutputParam[]>([])
+  const [projects, setProjects] = useState<Project[]>([])
   const user = useUser()
   useEffect(() => {
-    getProjects({ userId: user.id }).then((data) => {
+    projectApi.getServerProject({ userId: user.id }).then((data) => {
       setProjects(data)
     })
   }, [user.id])
@@ -50,9 +50,9 @@ const ScMasraf = (props: Props) => {
           return (
             <ProjectsItem
               key={o.id}
-              id={o.id}
-              firstLine={o.name}
-              secondLine={o.title}
+              id={0}
+              firstLine="#6395ff"
+              secondLine="#f3f3f3"
               link={"/sc-cost/" + o.id}
             />
           )

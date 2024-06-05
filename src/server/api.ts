@@ -85,10 +85,10 @@ export class RequiredError extends Error {
 export interface FormRequest {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof FormRequest
      */
-    id?: string;
+    id?: number;
 }
 /**
  * 
@@ -98,10 +98,10 @@ export interface FormRequest {
 export interface FormResult {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof FormResult
      */
-    id?: string;
+    id?: number;
     /**
      * 
      * @type {string}
@@ -147,10 +147,10 @@ export interface FormResult {
 export interface FormsRequest {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof FormsRequest
      */
-    id?: string;
+    id?: number;
 }
 /**
  * 
@@ -160,10 +160,10 @@ export interface FormsRequest {
 export interface FormsResult {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof FormsResult
      */
-    id?: string;
+    id?: number;
     /**
      * 
      * @type {string}
@@ -174,31 +174,6 @@ export interface FormsResult {
      * 
      * @type {string}
      * @memberof FormsResult
-     */
-    title?: string;
-}
-/**
- * 
- * @export
- * @interface GetServerLocationResult
- */
-export interface GetServerLocationResult {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerLocationResult
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerLocationResult
-     */
-    name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerLocationResult
      */
     title?: string;
 }
@@ -210,10 +185,10 @@ export interface GetServerLocationResult {
 export interface ListRequest {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ListRequest
      */
-    id?: string;
+    id?: number;
 }
 /**
  * 
@@ -223,10 +198,10 @@ export interface ListRequest {
 export interface ListResult {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ListResult
      */
-    id?: string;
+    id?: number;
     /**
      * 
      * @type {string}
@@ -259,10 +234,48 @@ export interface ListResult {
     date?: string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ListResult
      */
-    costType?: string;
+    costType?: number;
+}
+/**
+ * 
+ * @export
+ * @interface LocationRequest
+ */
+export interface LocationRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof LocationRequest
+     */
+    id?: number;
+}
+/**
+ * 
+ * @export
+ * @interface LocationResult
+ */
+export interface LocationResult {
+    /**
+     * 
+     * @type {number}
+     * @memberof LocationResult
+     */
+    id?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof LocationResult
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LocationResult
+     */
+    title?: string;
 }
 /**
  * 
@@ -398,7 +411,7 @@ export const FormFunctionsApiFp = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerForm(body: FormRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<FormResult> {
+        getServerForm(body: FormRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<FormResult>> {
             const localVarFetchArgs = FormFunctionsApiFetchParamCreator(configuration).getServerForm(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -758,11 +771,11 @@ export const LocationFunctionsApiFetchParamCreator = function (configuration?: C
     return {
         /**
          * 
-         * @param {GetServerLocationResult} body 
+         * @param {LocationRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerLocation(body: GetServerLocationResult, options: any = {}): FetchArgs {
+        getServerLocation(body: LocationRequest, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body', 'Required parameter body was null or undefined when calling getServerLocation.');
@@ -779,7 +792,7 @@ export const LocationFunctionsApiFetchParamCreator = function (configuration?: C
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             localVarUrlObj.search = null;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"GetServerLocationResult" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"LocationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -798,11 +811,11 @@ export const LocationFunctionsApiFp = function (configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {GetServerLocationResult} body 
+         * @param {LocationRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerLocation(body: GetServerLocationResult, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GetServerLocationResult> {
+        getServerLocation(body: LocationRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<LocationResult> {
             const localVarFetchArgs = LocationFunctionsApiFetchParamCreator(configuration).getServerLocation(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -825,11 +838,11 @@ export const LocationFunctionsApiFactory = function (configuration?: Configurati
     return {
         /**
          * 
-         * @param {GetServerLocationResult} body 
+         * @param {LocationRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerLocation(body: GetServerLocationResult, options?: any) {
+        getServerLocation(body: LocationRequest, options?: any) {
             return LocationFunctionsApiFp(configuration).getServerLocation(body, options)(fetch, basePath);
         },
     };
@@ -844,12 +857,12 @@ export const LocationFunctionsApiFactory = function (configuration?: Configurati
 export class LocationFunctionsApi extends BaseAPI {
     /**
      * 
-     * @param {GetServerLocationResult} body 
+     * @param {LocationRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LocationFunctionsApi
      */
-    public getServerLocation(body: GetServerLocationResult, options?: any) {
+    public getServerLocation(body: LocationRequest, options?: any) {
         return LocationFunctionsApiFp(this.configuration).getServerLocation(body, options)(this.fetch, this.basePath);
     }
 

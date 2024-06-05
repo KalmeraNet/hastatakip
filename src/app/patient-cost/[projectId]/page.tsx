@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react"
 import { Stack, Text, Box, Input } from "@mantine/core"
 import ListItem from "@/components/items/projectsItem"
 import { IconSearch } from "@tabler/icons-react"
-import { GetServerLocationResult, locationApi } from "@/server"
+import { LocationResult, locationApi } from "@/server"
 import { useUser } from "@/server/userContext"
 
 /*
@@ -17,7 +17,7 @@ GetLocationsOutputParam
 type Props = { params: { projectId: string } }
 
 const Locations = (props: Props) => {
-  const [locations, setLocations] = useState<GetServerLocationResult[]>([])
+  const [locations, setLocations] = useState<LocationResult[]>([])
   const user = useUser()
   useEffect(() => {
     locationApi.getServerLocation({
@@ -52,9 +52,9 @@ const Locations = (props: Props) => {
           return (
             <ListItem
               key={o.id}
-              id={o.id}
-              firstLine={o.name}
-              secondLine={o.title}
+              id={o.id ?? 0}
+              firstLine={o.name ?? ""}
+              secondLine={o.title ?? ""}
               link={"/patient-cost/" + props.params.projectId + "/" + o.id}
             />
           )

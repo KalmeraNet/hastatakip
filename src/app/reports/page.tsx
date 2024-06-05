@@ -33,13 +33,13 @@ const Reports = (props: Props) => {
         return (
           <RaporItem
             key={o.id}
-            id={o.id}
-            firstLine={o.name}
-            secondLine={o.title}
-            thirdLine={o.tip}
-            price={o.price}
-            date={o.date}
-            po={o.po}
+            id={o.id ?? 0}
+            firstLine={o.name ?? ""}
+            secondLine={o.title ?? ""}
+            thirdLine={o.tip ?? ""}
+        price={o.price ?? 0}
+            date={o.date ?? ""}
+        po={o.title ?? ""}
             link={"/reports/" + o.id}
           />
         )

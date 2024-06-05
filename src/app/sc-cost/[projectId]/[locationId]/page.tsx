@@ -44,8 +44,7 @@ const MasrafTipi = (props: Props) => {
   const user = useUser()
   useEffect(() => {
     formsApi.getServerForms({
-      id: user.id,
-      formsId: parseInt("0" + props.formsId, 10),
+      id: parseInt("0" + props.formsId, 10),
     }).then((data) => {
       setForms(data)
     })

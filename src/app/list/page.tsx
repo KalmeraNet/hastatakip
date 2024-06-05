@@ -39,14 +39,14 @@ const List = (props: Props) => {
         {list.map((o) => {
           return (
             <ListItem
-              key={o.id}
-              id={o.id}
-              firstLine={o.name}
-              secondLine={o.title}
-              thirdLine={o.tip}
-              price={o.price}
-              date={o.date}
-              po={o.po}
+              key={o.id ?? 0}
+              id={o.id ?? 0}
+              firstLine={o.name ?? ""}
+              secondLine={o.title ?? ""}
+              thirdLine={o.tip ?? ""}
+              date={o.date ?? ""}
+              price={o.costType ?? 0}
+              po={o.title ?? ""}
               link={"/list/" + o.id}
             />
           )

@@ -205,50 +205,6 @@ export interface GetServerLocationResult {
 /**
  * 
  * @export
- * @interface GetServerUserRequest
- */
-export interface GetServerUserRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerUserRequest
-     */
-    id?: string;
-}
-/**
- * 
- * @export
- * @interface GetServerUserResult
- */
-export interface GetServerUserResult {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerUserResult
-     */
-    id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerUserResult
-     */
-    fullName?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerUserResult
-     */
-    role?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetServerUserResult
-     */
-    initial?: string;
-}
-/**
- * 
- * @export
  * @interface ListRequest
  */
 export interface ListRequest {
@@ -345,6 +301,50 @@ export interface ProjectRequest {
      * @memberof ProjectRequest
      */
     userId?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UserRequest
+ */
+export interface UserRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserRequest
+     */
+    id?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UserResult
+ */
+export interface UserResult {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserResult
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserResult
+     */
+    fullName?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserResult
+     */
+    role?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserResult
+     */
+    initial?: string;
 }
 /**
  * FormFunctionsApi - fetch parameter creator
@@ -698,7 +698,7 @@ export const ListFunctionsApiFp = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerList(body: ListRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ListResult> {
+        getServerList(body: ListRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<ListResult>> {
             const localVarFetchArgs = ListFunctionsApiFetchParamCreator(configuration).getServerList(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -966,11 +966,11 @@ export const UserFunctionsApiFetchParamCreator = function (configuration?: Confi
     return {
         /**
          * 
-         * @param {GetServerUserRequest} body 
+         * @param {UserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerUser(body: GetServerUserRequest, options: any = {}): FetchArgs {
+        getServerUser(body: UserRequest, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body', 'Required parameter body was null or undefined when calling getServerUser.');
@@ -987,7 +987,7 @@ export const UserFunctionsApiFetchParamCreator = function (configuration?: Confi
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             localVarUrlObj.search = null;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"GetServerUserRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"UserRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -1006,11 +1006,11 @@ export const UserFunctionsApiFp = function (configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {GetServerUserRequest} body 
+         * @param {UserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerUser(body: GetServerUserRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GetServerUserResult> {
+        getServerUser(body: UserRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UserResult> {
             const localVarFetchArgs = UserFunctionsApiFetchParamCreator(configuration).getServerUser(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -1033,11 +1033,11 @@ export const UserFunctionsApiFactory = function (configuration?: Configuration, 
     return {
         /**
          * 
-         * @param {GetServerUserRequest} body 
+         * @param {UserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerUser(body: GetServerUserRequest, options?: any) {
+        getServerUser(body: UserRequest, options?: any) {
             return UserFunctionsApiFp(configuration).getServerUser(body, options)(fetch, basePath);
         },
     };
@@ -1052,12 +1052,12 @@ export const UserFunctionsApiFactory = function (configuration?: Configuration, 
 export class UserFunctionsApi extends BaseAPI {
     /**
      * 
-     * @param {GetServerUserRequest} body 
+     * @param {UserRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserFunctionsApi
      */
-    public getServerUser(body: GetServerUserRequest, options?: any) {
+    public getServerUser(body: UserRequest, options?: any) {
         return UserFunctionsApiFp(this.configuration).getServerUser(body, options)(this.fetch, this.basePath);
     }
 

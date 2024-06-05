@@ -19,8 +19,7 @@ const Forms = (props: Props) => {
   const user = useUser()
   useEffect(() => {
     formApi.getServerForm({
-      id: user.id,
-      formId: parseInt("0" + props.params.formId, 10),
+      id: parseInt("0" + props.params.formId, 10),
     }).then((data) => {
       setForm(data)
     })

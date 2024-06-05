@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 import { createContext, useContext, useEffect, useState } from "react"
-import { GetServerUserResult } from "./api"
+import { UserResult } from "./api"
 import { userApi } from "."
 
 
 // User
-const _user = createContext<GetServerUserResult>({
+const _user = createContext<UserResult>({
   id: "",
   fullName: "",
   initial: "",
@@ -14,7 +14,7 @@ const _user = createContext<GetServerUserResult>({
 })
 
 export function UserProvider({ children }: { children: any }) {
-  const [user, setUser] = useState<GetServerUserResult>({
+  const [user, setUser] = useState<UserResult>({
     id: "",
     fullName: "",
     initial: "",

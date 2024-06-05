@@ -21,8 +21,7 @@ const Locations = (props: Props) => {
   const user = useUser()
   useEffect(() => {
     locationApi.getServerLocation({
-      id: user.id,
-      projectId: parseInt("0" + props.params.projectId, 10),
+      id: parseInt("0" + props.params.projectId, 10),
     }).then((data) => {
       setLocations(data)
     })

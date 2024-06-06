@@ -1,90 +1,103 @@
+"use client"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { Flex, PasswordInput, Button, TextInput, Text } from "@mantine/core"
 import Link from "next/link"
 import React from "react"
+import { useFormState, useFormStatus } from 'react-dom';
+import { authenticate } from '@/app/lib/actions';
 
 type Props = {}
 
 const Login = (props: Props) => {
-  {
-    return (
-      <>
-        {/* Header */}
-        <Header title="Login" key="id" />
+  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  const { pending } = useFormStatus();
 
-        {/* Body */}
+  return (
+    <>
+      {/* Header */}
+      <Header title="Login" key="id" />
+
+      {/* Body */}
+      <Flex
+        direction="column"
+        justify="center"
+        align="center"
+        style={{ height: "100dh" }}
+      >
         <Flex
-          direction="column"
-          justify="center"
           align="center"
-          style={{ height: "100dh" }}
+          justify="center"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
         >
-          <Flex
-            align="center"
-            justify="center"
+          <div
             style={{
-              width: "100%",
-              height: "100%",
+              padding: "40px",
+              border: "solid #ccc 1px",
+              margin: "35px 20px 35px 20px",
+              maxWidth: "28rem",
             }}
           >
-            <div
+            <h1 style={{ fontSize: "1.5rem" }}>Login to Your Account</h1>
+            {errorMessage && (
+              <>
+                <p>{errorMessage}</p>
+              </>
+            )}
+            <form action={dispatch}>
+            <div>
+              <TextInput
+                label="E-Mail"
+                placeholder="E-Mail"
+                id="email"
+                name="email"
+                style={{ marginBottom: "2rem", fontSize: "16pt" }}
+              />
+            </div>
+            <div>
+              <PasswordInput
+                label="Password"
+                placeholder="Password"
+                id="password"
+                name="password"
+                style={{ marginBottom: "2rem", fontSize: "16pt" }}
+              />
+            </div>
+              <Button type="submit"
+                fullWidth
+                variant="filled"
+                color="indigo"
+                disabled={pending}
+                style={{ marginBottom: "1.5rem" }}
+              >
+                Login
+              </Button>
+            <Link
+              href="/forgot-password"
               style={{
-                padding: "40px",
-                border: "solid #ccc 1px",
-                margin: "35px 20px 35px 20px",
-                maxWidth: "28rem",
+                textAlign: "end",
+                justifyItems: "center",
+                border: "none",
+                marginBottom: ".5rem",
+                textDecoration: "none",
+                color: "indigo",
               }}
             >
-              <h1 style={{ fontSize: "1.5rem" }}>Login to Your Account</h1>
-              <div>
-                <TextInput
-                  label="E-Mail"
-                  placeholder="E-Mail"
-                  style={{ marginBottom: "2rem", fontSize: "16pt" }}
-                />
-              </div>
-              <div>
-                <PasswordInput
-                  label="Password"
-                  placeholder="Password"
-                  style={{ marginBottom: "2rem", fontSize: "16pt" }}
-                />
-              </div>
-              <Link href="/">
-                <Button
-                  fullWidth
-                  variant="filled"
-                  color="indigo"
-                  style={{ marginBottom: "1.5rem" }}
-                >
-                  Login
-                </Button>
-              </Link>
-              <Link
-                href="/forgot-password"
-                style={{
-                  textAlign: "end",
-                  justifyItems: "center",
-                  border: "none",
-                  marginBottom: ".5rem",
-                  textDecoration: "none",
-                  color: "indigo",
-                }}
-              >
-                <Text style={{ textDecoration: "none", color: "#506bff" }}>
-                  Forgot Password ?
-                </Text>
-              </Link>
-            </div>
-          </Flex>
+              <Text style={{ textDecoration: "none", color: "#506bff" }}>
+                Forgot Password ?
+              </Text>
+            </Link>
+            </form>
+          </div>
         </Flex>
+      </Flex>
 
-        {/* Footer */}
-        <Footer />
-      </>
-    )
-  }
+      <Footer />
+    </>
+  )
 }
 
 export default Login

@@ -14,7 +14,7 @@ const Reports = (props: Props) => {
   const user = useUser()
   useEffect(() => {
     listApi.getServerList({
-      id: user.id,
+      userId: user.id,
     }).then((data) => {
       setList(data)
     })
@@ -37,9 +37,9 @@ const Reports = (props: Props) => {
             firstLine={o.name ?? ""}
             secondLine={o.title ?? ""}
             thirdLine={o.tip ?? ""}
-        price={o.price ?? 0}
+        price={o.price ?? ""}
             date={o.date ?? ""}
-        po={o.title ?? ""}
+        po={o.costType ?? 0}
             link={"/reports/" + o.id}
           />
         )

@@ -27,7 +27,7 @@ const MenuControl = (props: Props) => {
         </div>
 
         {/* Body */}
-        <MenuButton color={""} text={""} link={""} id={0} />
+        <MenuButton />
 
         {/* Footer */}
         <Footer />

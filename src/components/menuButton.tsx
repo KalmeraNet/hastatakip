@@ -30,7 +30,7 @@ const arr: Props[] = [
   },
 ]
 
-const MenuButton = (props: Props) => {
+const MenuButton = () => {
   return (
     <Grid
       gutter={{ base: 30 }}

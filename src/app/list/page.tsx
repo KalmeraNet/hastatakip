@@ -20,7 +20,7 @@ const List = (props: Props) => {
   const user = useUser()
   useEffect(() => {
     listApi.getServerList({
-      id: user.id,
+      userId: user.id,
     }).then((data) => {
       setList(data)
     })

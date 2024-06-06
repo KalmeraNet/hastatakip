@@ -16,6 +16,7 @@ import {
 import { IconChevronLeft, IconKey, IconLogout, IconUser } from "@tabler/icons-react"
 import Link from "next/link"
 import React from "react"
+import { signOut } from '@/auth';
 
 type Props = {
   title?: string
@@ -23,6 +24,7 @@ type Props = {
 }
 
 const Header = (props: Props) => {
+  
   const user = useUser()
   return (
     <Flex
@@ -94,6 +96,9 @@ const Header = (props: Props) => {
                 leftSection={
                   <IconLogout style={{ width: rem(14), height: rem(14) }} />
                 }
+                onClick={() => {
+                  signOut()
+                }}
               >
                 Logout
               </MenuItem>

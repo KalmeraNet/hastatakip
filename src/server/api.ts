@@ -134,6 +134,12 @@ export interface FormResult {
     date?: string;
     /**
      * 
+     * @type {string}
+     * @memberof FormResult
+     */
+    po?: string;
+    /**
+     * 
      * @type {boolean}
      * @memberof FormResult
      */
@@ -185,10 +191,10 @@ export interface FormsResult {
 export interface ListRequest {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof ListRequest
      */
-    id?: number;
+    userId?: string;
 }
 /**
  * 
@@ -411,7 +417,7 @@ export const FormFunctionsApiFp = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerForm(body: FormRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<FormResult>> {
+        getServerForm(body: FormRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<FormResult> {
             const localVarFetchArgs = FormFunctionsApiFetchParamCreator(configuration).getServerForm(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -815,7 +821,7 @@ export const LocationFunctionsApiFp = function (configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServerLocation(body: LocationRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<LocationResult> {
+        getServerLocation(body: LocationRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<LocationResult>> {
             const localVarFetchArgs = LocationFunctionsApiFetchParamCreator(configuration).getServerLocation(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {

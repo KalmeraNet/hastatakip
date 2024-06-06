@@ -15,7 +15,7 @@ GetFormOutputParam
 type Props = { params: { formId: string } }
 
 const Forms = (props: Props) => {
-  const [form, setForm] = useState<FormResult[]>([])
+  const [form, setForm] = useState<FormResult>()
   const user = useUser()
   useEffect(() => {
     formApi.getServerForm({
@@ -35,13 +35,13 @@ const Forms = (props: Props) => {
         {form && (
           <FormItem
             key={form.id}
-            id={form.id}
-            firstLine={form.name}
-            secondLine={form.title}
-            thirdLine={form.tip}
-            po={form.po}
-            price={form.price}
-            date={form.date}
+            id={form.id ?? 0}
+            firstLine={form.name ?? ""}
+            secondLine={form.title ?? ""}
+            thirdLine={form.tip ?? ""}
+            po={form.po ?? ""}
+            price={form.price ?? 0}
+            date={form.date ?? ""}
           />
         )}
       </>

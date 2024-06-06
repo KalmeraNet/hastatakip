@@ -22,7 +22,7 @@ const Reports = (props: Props) => {
   return (
     <>
       {/* Header */}
-      <Header title="Reports" link="/" />
+      <Header title="Reports" link="/menu" />
 
       {/* Body */}
       <Text size="xl" style={{ marginTop: "1rem", marginLeft: "2rem" }}>
@@ -37,9 +37,9 @@ const Reports = (props: Props) => {
             firstLine={o.name ?? ""}
             secondLine={o.title ?? ""}
             thirdLine={o.tip ?? ""}
-        price={o.price ?? ""}
+        po={o.price ??""}
             date={o.date ?? ""}
-        po={o.costType ?? 0}
+        price={o.costType ?? 0}
             link={"/reports/" + o.id}
           />
         )

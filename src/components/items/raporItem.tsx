@@ -7,10 +7,10 @@ type Props = {
   firstLine: string
   secondLine: string
   thirdLine: string
-  price: string
+  price: number
   link: string
   date: string
-  po: number
+  po: string
 }
 
 const RaporItem = (props: Props) => {

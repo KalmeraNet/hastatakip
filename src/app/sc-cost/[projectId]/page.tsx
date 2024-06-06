@@ -39,7 +39,7 @@ const Locations = (props: Props) => {
             Please select the location where you will enter the expense.
           </Text>
           <Input
-            placeholder="Search for Trial"
+            placeholder="Search for Center"
             rightSection={<IconSearch />}
             style={{ height: "auto", width: "100%", marginTop: ".5rem" }}
             // value={search}

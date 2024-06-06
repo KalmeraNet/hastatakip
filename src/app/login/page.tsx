@@ -1,6 +1,5 @@
 "use client"
 import Footer from "@/components/footer"
-import Header from "@/components/header"
 import { Flex, PasswordInput, Button, TextInput, Text } from "@mantine/core"
 import Link from "next/link"
 import React from "react"
@@ -16,7 +15,14 @@ const Login = (props: Props) => {
   return (
     <>
       {/* Header */}
-      <Header title="Login" key="id" />
+       <Flex
+      justify="space-between"
+      align="center"
+      style={{ padding: "0 1.2rem", backgroundColor: "#ccc" }}
+    >
+      <h1>Login</h1>
+    </Flex>
+
 
       {/* Body */}
       <Flex

@@ -29,7 +29,7 @@ const CenterCost = (props: Props) => {
   return (
     <>
       {/* Header */}
-      <Header title="Centers" link="/" />
+      <Header title="Centers" link="/menu" />
 
       {/* Body */}
       <Stack style={{ minHeight: "500px" }} gap={0}>
@@ -38,7 +38,7 @@ const CenterCost = (props: Props) => {
             Please select the center where you will enter the expense.
           </Text>
           <Input
-            placeholder="Search for Trial"
+            placeholder="Search for Centers"
             rightSection={<IconSearch />}
             style={{ height: "auto", width: "100%", marginTop: ".5rem" }}
             // value={search}

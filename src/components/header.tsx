@@ -47,7 +47,7 @@ const Header = (props: Props) => {
       )}
       {props.title && <h1>{props.title}</h1>}
       {!props.title && (
-        <Link style={{ textDecoration: "none", color: "#000" }} href="/">
+        <Link style={{ textDecoration: "none", color: "#000" }} href="/menu">
           <Image h={92} w="auto" fit="contain" src="/logo.png" alt="logo" />
         </Link>
       )}

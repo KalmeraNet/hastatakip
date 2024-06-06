@@ -1,36 +1,32 @@
 "use client"
-import Footer from "@/components/footer"
-import Header from "@/components/header"
-import MenuButton from "@/components/menuButton"
-import { Flex } from "@mantine/core"
+import { Button, Flex, Image, Text } from "@mantine/core"
+import Link from "next/link"
 
 type Props = {}
 
 const MenuControl = (props: Props) => {
   return (
     <>
-      <Flex
+      <Flex 
         direction="column"
         justify="center"
         align="center"
-        style={{ height: "100dh" }}
-      >
-        <div
-          style={{
-            height: "80px",
-            width: "100%",
-            backgroundColor: "#f3f3f3",
-          }}
+        style={{ height: "100dh"}}
         >
-          {/* Header */}
-          <Header />
-        </div>
+          <Image h={12} w="15rem" fit="contain" src="/logo.png" alt="logo" style={{marginTop: "5rem" }} />
+          <Text size="xl" fw={500}>Welcome to Novo Nordisk</Text>
+          <Text size="md" >Press Button to Login</Text>
 
-        {/* Body */}
-        <MenuButton />
-
-        {/* Footer */}
-        <Footer />
+            <Link href="/login" style={{ marginTop: "5rem" , textDecoration: "none" }}>
+              <Button
+                fullWidth
+                w={240}
+                variant="filled"
+                color="indigo"
+              >
+                Login
+              </Button>
+            </Link>
       </Flex>
     </>
   )

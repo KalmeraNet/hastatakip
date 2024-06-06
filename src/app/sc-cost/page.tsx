@@ -28,7 +28,7 @@ const ScMasraf = (props: Props) => {
   return (
     <>
       {/* Header */}
-      <Header title="Projects" link="/" />
+      <Header title="Projects" link="/menu" />
 
       {/* Body */}
       <Stack style={{ minHeight: "500px" }} gap={0}>
@@ -37,7 +37,7 @@ const ScMasraf = (props: Props) => {
             Please select the project for which you will enter expenses.
           </Text>
           <Input
-            placeholder="Search for Trial"
+            placeholder="Search for Projects"
             rightSection={<IconSearch />}
             style={{ height: "auto", width: "100%", marginTop: ".5rem" }}
             // value={search}

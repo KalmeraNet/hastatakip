@@ -10,7 +10,7 @@ const ChangePassword = (props: Props) => {
   return (
     <>
       {/* Header */}
-      <Header link="/" />
+      <Header link="/menu" />
 
       {/* Body */}
       <div style={{ marginBottom: "17rem" }}>

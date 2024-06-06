@@ -35,7 +35,7 @@ const FormItem = (props: Props) => {
         </Flex>
         <Flex justify="space-around" align="center">
           <Text>Cost:</Text>
-          <Text variant="unstyled">{"" + props.price}</Text>
+          <Text variant="unstyled">{"" + props.price} TL</Text>
         </Flex>
         <Flex justify="space-around" align="center">
           <Text>Type:</Text>

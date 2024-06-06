@@ -61,7 +61,7 @@ const CroHeader = (props: Props) => {
                 <Menu.Divider />
 
                 <Link
-                  href="/cro/change-password"
+                  href="/change-password"
                   style={{ textDecoration: "none" }}
                 >
                   <Menu.Item
@@ -83,7 +83,7 @@ const CroHeader = (props: Props) => {
                   </Menu.Item>
                 </Link>
 
-                <Link href="/cro/login" style={{ textDecoration: "none" }}>
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <MenuItem
                     color="red"
                     leftSection={

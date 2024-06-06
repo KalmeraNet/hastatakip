@@ -1,7 +1,6 @@
 import Footer from "@/components/footer"
 import Header from "@/components/header"
-import { Button, Flex, PasswordInput, Text, TextInput } from "@mantine/core"
-import Link from "next/link"
+import { Button, Flex, PasswordInput, Text } from "@mantine/core"
 import React from "react"
 
 type Props = {}
@@ -9,8 +8,13 @@ type Props = {}
 const Confirmation = (props: Props) => {
   return (
     <>
-      {/* Header */}
-      <Header title="Confirmation" />
+      {/* Header */}<Flex
+      justify="space-between"
+      align="center"
+      style={{ padding: "0 1.2rem", backgroundColor: "#ccc" }}
+    >
+      <h1>Confirmation</h1>
+    </Flex>
 
       {/* Body */}
       <Flex
@@ -54,7 +58,6 @@ const Confirmation = (props: Props) => {
                 style={{ marginBottom: "3rem", fontSize: "16pt" }}
               />
             </div>
-            <Link href="/login">
               <Button
                 fullWidth
                 variant="filled"
@@ -63,7 +66,6 @@ const Confirmation = (props: Props) => {
               >
                 Login
               </Button>
-            </Link>
           </div>
         </Flex>
       </Flex>

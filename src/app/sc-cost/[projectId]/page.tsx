@@ -42,10 +42,10 @@ const Locations = (props: Props) => {
             placeholder="Search for Center"
             rightSection={<IconSearch />}
             style={{ height: "auto", width: "100%", marginTop: ".5rem" }}
-            // value={search}
-            // onChange={(e) => {
-            //   setSearch(e.target.value)
-            // }}
+          // value={search}
+          // onChange={(e) => {
+          //   setSearch(e.target.value)
+          // }}
           />
         </Box>
         {locations.map((o) => {

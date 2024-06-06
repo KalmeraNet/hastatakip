@@ -15,13 +15,13 @@ const Login = (props: Props) => {
   return (
     <>
       {/* Header */}
-       <Flex
-      justify="space-between"
-      align="center"
-      style={{ padding: "0 1.2rem", backgroundColor: "#ccc" }}
-    >
-      <h1>Login</h1>
-    </Flex>
+      <Flex
+        justify="space-between"
+        align="center"
+        style={{ padding: "0 1.2rem", backgroundColor: "#ccc" }}
+      >
+        <h1>Login</h1>
+      </Flex>
 
 
       {/* Body */}
@@ -54,24 +54,24 @@ const Login = (props: Props) => {
               </>
             )}
             <form action={dispatch}>
-            <div>
-              <TextInput
-                label="E-Mail"
-                placeholder="E-Mail"
-                id="email"
-                name="email"
-                style={{ marginBottom: "2rem", fontSize: "16pt" }}
-              />
-            </div>
-            <div>
-              <PasswordInput
-                label="Password"
-                placeholder="Password"
-                id="password"
-                name="password"
-                style={{ marginBottom: "2rem", fontSize: "16pt" }}
-              />
-            </div>
+              <div>
+                <TextInput
+                  label="E-Mail"
+                  placeholder="E-Mail"
+                  id="email"
+                  name="email"
+                  style={{ marginBottom: "2rem", fontSize: "16pt" }}
+                />
+              </div>
+              <div>
+                <PasswordInput
+                  label="Password"
+                  placeholder="Password"
+                  id="password"
+                  name="password"
+                  style={{ marginBottom: "2rem", fontSize: "16pt" }}
+                />
+              </div>
               <Button type="submit"
                 fullWidth
                 variant="filled"
@@ -81,26 +81,25 @@ const Login = (props: Props) => {
               >
                 Login
               </Button>
-            <Link
-              href="/forgot-password"
-              style={{
-                textAlign: "end",
-                justifyItems: "center",
-                border: "none",
-                marginBottom: ".5rem",
-                textDecoration: "none",
-                color: "indigo",
-              }}
-            >
-              <Text style={{ textDecoration: "none", color: "#506bff" }}>
-                Forgot Password ?
-              </Text>
-            </Link>
+              <Link
+                href="/forgot-password"
+                style={{
+                  textAlign: "end",
+                  justifyItems: "center",
+                  border: "none",
+                  marginBottom: ".5rem",
+                  textDecoration: "none",
+                  color: "indigo",
+                }}
+              >
+                <Text style={{ textDecoration: "none", color: "#506bff" }}>
+                  Forgot Password ?
+                </Text>
+              </Link>
             </form>
           </div>
         </Flex>
       </Flex>
-
       <Footer />
     </>
   )

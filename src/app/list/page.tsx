@@ -29,7 +29,7 @@ const List = (props: Props) => {
   return (
     <>
       {/* Header */}
-      <Header title="Lists" link="/menu"  />
+      <Header title="Lists" link="/menu" />
 
       {/* Body */}
       <Text size="xl" style={{ marginTop: "1rem", marginLeft: "2rem" }}>

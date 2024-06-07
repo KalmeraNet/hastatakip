@@ -286,6 +286,25 @@ export interface LocationResult {
 /**
  * 
  * @export
+ * @interface LoginRequest
+ */
+export interface LoginRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRequest
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginRequest
+     */
+    password?: string;
+}
+/**
+ * 
+ * @export
  * @interface Project
  */
 export interface Project {
@@ -985,6 +1004,37 @@ export const UserFunctionsApiFetchParamCreator = function (configuration?: Confi
     return {
         /**
          * 
+         * @param {LoginRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLoginUser(body: LoginRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body', 'Required parameter body was null or undefined when calling getLoginUser.');
+            }
+            const localVarPath = `/v1/getLoginUser`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            localVarUrlObj.search = null;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"LoginRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {UserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1025,6 +1075,24 @@ export const UserFunctionsApiFp = function (configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {LoginRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLoginUser(body: LoginRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UserResult> {
+            const localVarFetchArgs = UserFunctionsApiFetchParamCreator(configuration).getLoginUser(body, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @param {UserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1052,6 +1120,15 @@ export const UserFunctionsApiFactory = function (configuration?: Configuration, 
     return {
         /**
          * 
+         * @param {LoginRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLoginUser(body: LoginRequest, options?: any) {
+            return UserFunctionsApiFp(configuration).getLoginUser(body, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @param {UserRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1069,6 +1146,17 @@ export const UserFunctionsApiFactory = function (configuration?: Configuration, 
  * @extends {BaseAPI}
  */
 export class UserFunctionsApi extends BaseAPI {
+    /**
+     * 
+     * @param {LoginRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserFunctionsApi
+     */
+    public getLoginUser(body: LoginRequest, options?: any) {
+        return UserFunctionsApiFp(this.configuration).getLoginUser(body, options)(this.fetch, this.basePath);
+    }
+
     /**
      * 
      * @param {UserRequest} body 

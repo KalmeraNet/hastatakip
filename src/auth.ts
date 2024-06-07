@@ -11,27 +11,23 @@ export const { auth, signIn, signOut } = NextAuth({
     providers: [Credentials({
         async authorize(credentials) {
             let vls: UserPass = credentials as UserPass
-
-            let res = await fetch(basePath + '/v1/getServerUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ id: vls.email }),
-            })
-            // .then((response) => response.json())
-            // .then((data) => console.log(data));
-
+            let res: any
+            try {
+                res = await fetch('http://172.17.0.3:7400/v1/getLogin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'accept': 'application/json'
+                    },
+                    body: JSON.stringify({ id: vls.email, password: vls.password }),
+                })
+                // .then((response) => response.json())
+                // .then((data) => console.log(data));
+            } catch (e) {
+                console.error(e)
+            }
             let usr = await res.json() as UserResult
 
-            // let usr: UserResult | null = null
-            // try {
-            //     usr = await uApi.getServerUser({ id: vls.email })
-            // }
-            // catch (e) {
-            //     let x = 1;
-            // }
             // if (credentials.email == 'a') {
             //     throw new Error('Invalid Username')
             // }

@@ -1,5 +1,4 @@
 "use client"
-import { useUser } from "@/server/userContext"
 import {
   Avatar,
   Button,
@@ -18,6 +17,7 @@ import Link from "next/link"
 import React, { useState } from "react"
 import { signOut, auth } from '@/auth';
 import { UserResult } from "@/server"
+import { useUser } from "@/app/userContext"
 
 type Props = {
   title?: string

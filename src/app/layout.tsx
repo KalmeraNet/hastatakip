@@ -2,8 +2,8 @@ import "@mantine/core/styles.css"
 import React from "react"
 import { MantineProvider, ColorSchemeScript } from "@mantine/core"
 import { theme } from "../theme"
-import { UserProvider } from "@/server/userContext"
 import { Viewport } from "next"
+import { NextAuthProvider } from "@/components/nextAuthProvider"
 
 export const metadata = {
   title: "Mantine Next.js template",
@@ -25,9 +25,9 @@ export default function RootLayout({ children }: { children: any }) {
         <ColorSchemeScript />
       </head>
       <body style={{ height: "100%" }}>
-        <UserProvider>
+        <NextAuthProvider>
           <MantineProvider theme={theme}>{children}</MantineProvider>
-        </UserProvider>
+        </NextAuthProvider>
       </body>
     </html>
   )

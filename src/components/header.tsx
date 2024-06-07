@@ -18,6 +18,12 @@ import React, { useState } from "react"
 import { signOut, auth } from '@/auth';
 import { UserResult } from "@/server"
 import { useUser } from "@/app/userContext"
+import { useSession } from "next-auth/react"
+import a from "next-auth/next"
+import { getToken } from "next-auth/jwt"
+import { cookies, headers } from "next/headers"
+
+
 
 type Props = {
   title?: string
@@ -25,7 +31,9 @@ type Props = {
 }
 
 const Header = (props: Props) => {
-  const user = useUser()
+  const { data: session, status } = useSession()
+
+  // const user = useUser()
   return (
     <Flex
       justify="space-between"
@@ -52,21 +60,21 @@ const Header = (props: Props) => {
         </Link>
       )}
 
-      {user && (
+      {session?.user && (
         <Menu shadow="md" width={200}>
           <MenuTarget>
             <Button variant="transparent" size="lg">
               <Avatar color="#6395ff" radius="xl">
-                {user.initial}
+                {(session?.user as any).initial}
               </Avatar>
             </Button>
           </MenuTarget>
 
           <MenuDropdown>
             <MenuLabel style={{ fontWeight: "bold" }}>
-              {user.fullName}
+              {(session?.user as any).fullName}
             </MenuLabel>
-            <MenuLabel>{user.role}</MenuLabel>
+            <MenuLabel>{(session?.user as any).role}</MenuLabel>
 
             <MenuDivider />
 

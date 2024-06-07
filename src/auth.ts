@@ -9,6 +9,7 @@ export type UserPass = { email: string, password: string }
 export const { auth, signIn, signOut } = NextAuth({
     ...authConfig,
     providers: [Credentials({
+        name: 'login',
         async authorize(credentials) {
             let vls: UserPass = credentials as UserPass
             let res: any
@@ -29,6 +30,9 @@ export const { auth, signIn, signOut } = NextAuth({
             } catch (e) {
                 console.error(e)
             }
+
+
+
 
 
 

@@ -17,7 +17,10 @@ import { Configuration } from "./configuration";
 export * from "./api";
 export * from "./configuration";
 
-const defaultConfig = new Configuration({ basePath: 'http://localhost:7400' })
+export const basePath = 'http://localhost:7400'
+
+
+const defaultConfig = new Configuration({ basePath })
 export const userApi = new UserFunctionsApi(defaultConfig);
 export const projectApi = new ProjectFunctionsApi(defaultConfig);
 export const formApi = new FormFunctionsApi(defaultConfig);

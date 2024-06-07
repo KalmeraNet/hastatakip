@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { UserResult } from "./api"
 import { userApi } from "."
+import { auth } from "@/auth"
 
 
 // User
@@ -23,15 +24,15 @@ export function UserProvider({ children }: { children: any }) {
 
   useEffect(() => {
     if (user.id == "") {
-      userApi.getServerUser({ id: "andre" }).then((o) => {
-        setUser((x) => ({
-          ...x,
-          id: o.id,
-          fullName: o.fullName,
-          initial: o.initial,
-          role: o.role,
-        }))
-      })
+      // userApi.getServerUser({ id: "andre" }).then((o) => {
+      //   setUser((x) => ({
+      //     ...x,
+      //     id: o.id,
+      //     fullName: o.fullName,
+      //     initial: o.initial,
+      //     role: o.role,
+      //   }))
+      // })
     }
   }, [user.id])
 
@@ -39,7 +40,17 @@ export function UserProvider({ children }: { children: any }) {
 }
 
 export function useUser() {
-  return useContext(_user)
+  const [user, setUser] = useState<UserResult>()
+  useEffect(() => {
+    auth().then(ath => {
+      setUser(ath?.user as UserResult)
+    })
+      .catch(() => {
+        setUser(undefined)
+      })
+  }, [])
+  
+  return user
 }
 
 // // Form

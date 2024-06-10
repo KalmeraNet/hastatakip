@@ -14,14 +14,9 @@ import {
 } from "@mantine/core"
 import { IconChevronLeft, IconKey, IconLogout, IconUser } from "@tabler/icons-react"
 import Link from "next/link"
-import React, { useState } from "react"
-import { signOut, auth } from '@/auth';
-import { UserResult } from "@/server"
-import { useUser } from "@/app/userContext"
+import React from "react"
+// import { signOut } from '@/auth';
 import { useSession } from "next-auth/react"
-import a from "next-auth/next"
-import { getToken } from "next-auth/jwt"
-import { cookies, headers } from "next/headers"
 
 
 
@@ -105,7 +100,7 @@ const Header = (props: Props) => {
                   <IconLogout style={{ width: rem(14), height: rem(14) }} />
                 }
                 onClick={() => {
-                  signOut({ redirectTo: '/' })
+                  // signOut({ redirectTo: '/' })
                 }}
               >
                 Logout

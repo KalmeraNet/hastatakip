@@ -11,7 +11,7 @@ export function useUser() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      setUser(session?.user)
+      // setUser(session?.user)
     } else {
       setUser(null)
     }

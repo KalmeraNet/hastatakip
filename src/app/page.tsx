@@ -2,10 +2,20 @@
 import { Button, Flex, Image, Text } from "@mantine/core"
 import Link from "next/link"
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useUser } from "./userContext"
+import { useNavigate } from "react-router"
+import { getServerSession } from "next-auth"
+import { authOptions } from "./api/auth/[...nextauth]/route"
+import { redirect } from "next/navigation"
 
 type Props = {}
 
+
+
+
 const MenuControl = (props: Props) => {
+  const user = useUser()
+
   return (
     <>
       <Flex
@@ -18,7 +28,7 @@ const MenuControl = (props: Props) => {
         <Text size="xl" fw={500}>Welcome to Novo Nordisk</Text>
         <Text size="md" >Press Button to Login</Text>
 
-        <Button
+        {!user && <Button
           onClick={() => {
             signIn()
           }
@@ -27,13 +37,44 @@ const MenuControl = (props: Props) => {
           w={240}
           variant="filled"
           color="indigo"
+          style={{ marginTop: '4rem' }}
         >
           Login
-        </Button>
+        </Button>}
+        {user && <Button onClick={() => {
+          window.location.href = '/menu'
+        }}
+          fullWidth
+          w={240}
+          variant="filled"
+          color="indigo"
+          style={{ marginTop: '5rem' }}
 
+        >Goto SC Menu</Button>}
+        {user && <Button onClick={() => {
+          window.location.href = '/admin/menu'
+        }}
+          fullWidth
+          w={240}
+          variant="filled"
+          color="indigo"
+          style={{ marginTop: '2rem' }}
+
+        >Goto Admin Menu</Button>}
+        {user && <Button onClick={() => {
+          window.location.href = '/cro/menu'
+        }}
+          fullWidth
+          w={240}
+          variant="filled"
+          color="indigo"
+          style={{ marginTop: '2rem' }}
+
+        >Goto CRO Menu</Button>}
       </Flex>
     </>
   )
 }
+
 
 export default MenuControl

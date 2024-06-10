@@ -1,5 +1,5 @@
 "use client"
-import { useUser } from "@/server/userContext"
+import { useUser } from "@/app/userContext"
 import {
   AppShell,
   Avatar,

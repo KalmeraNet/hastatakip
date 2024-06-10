@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { UserResult } from "../server/api"
 import { useSession } from "next-auth/react"
+import { userApi } from "@/server"
 
 export function useUser() {
   const [user, setUser] = useState<UserResult | null>()
@@ -11,7 +12,13 @@ export function useUser() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      // setUser(session?.user)
+      userApi.getServerUser({ id: session.user?.email ?? '' })
+        .then(r => {
+          setUser(r)
+        })
+        .catch(err => {
+          setUser(null)
+        })
     } else {
       setUser(null)
     }
@@ -19,3 +26,4 @@ export function useUser() {
 
   return user
 }
+

@@ -16,7 +16,8 @@ import { IconChevronLeft, IconKey, IconLogout, IconUser } from "@tabler/icons-re
 import Link from "next/link"
 import React from "react"
 // import { signOut } from '@/auth';
-import { useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
+import { useUser } from "@/app/userContext"
 
 
 
@@ -26,9 +27,8 @@ type Props = {
 }
 
 const Header = (props: Props) => {
-  const { data: session, status } = useSession()
 
-  // const user = useUser()
+  const user = useUser()
   return (
     <Flex
       justify="space-between"
@@ -55,21 +55,21 @@ const Header = (props: Props) => {
         </Link>
       )}
 
-      {session?.user && (
+      {user && (
         <Menu shadow="md" width={200}>
           <MenuTarget>
             <Button variant="transparent" size="lg">
               <Avatar color="#6395ff" radius="xl">
-                {(session?.user as any).initial}
+                {user.initial}
               </Avatar>
             </Button>
           </MenuTarget>
 
           <MenuDropdown>
             <MenuLabel style={{ fontWeight: "bold" }}>
-              {(session?.user as any).fullName}
+              {user.fullName}
             </MenuLabel>
-            <MenuLabel>{(session?.user as any).role}</MenuLabel>
+            <MenuLabel>{user.role}</MenuLabel>
 
             <MenuDivider />
 
@@ -100,7 +100,7 @@ const Header = (props: Props) => {
                   <IconLogout style={{ width: rem(14), height: rem(14) }} />
                 }
                 onClick={() => {
-                  // signOut({ redirectTo: '/' })
+                  signOut()
                 }}
               >
                 Logout

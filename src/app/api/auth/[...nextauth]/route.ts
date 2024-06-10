@@ -39,7 +39,11 @@ export const authOptions = {
         //         return usr
         //     },
         // })
-    ]
+    ],
 }
 
-export default NextAuth(authOptions)
+const auth = NextAuth(authOptions)
+
+export { auth as GET, auth as POST, auth as PUT, auth as DELETE }
+
+//export default NextAuth(authOptions)

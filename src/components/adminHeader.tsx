@@ -1,5 +1,4 @@
 "use client"
-import { useUser } from "@/server/userContext"
 import {
   AppShell,
   Avatar,
@@ -13,6 +12,7 @@ import {
 } from "@mantine/core"
 import { IconKey, IconLogout, IconUser } from "@tabler/icons-react"
 import Link from "next/link"
+import { useUser } from "@/app/userContext"
 import React from "react"
 
 type Props = {}

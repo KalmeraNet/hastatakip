@@ -21,6 +21,7 @@ import {
   IconTrash,
 } from "@tabler/icons-react"
 import { AppShell, Table, Input } from "@mantine/core"
+import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
@@ -110,67 +111,69 @@ const Site = (props: Props) => {
   }, [search])
 
   return (
-    <AppShell>
-      {/* Header */}
-      <AdminHeader />
+    <ReqLogin>
+      <AppShell>
+        {/* Header */}
+        <AdminHeader />
 
-      {/* Navbar */}
-      <AdminNavbar />
+        {/* Navbar */}
+        <AdminNavbar />
 
-      {/* Body */}
-      <AppShell.Main>
-        <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
-          {items}
-        </Breadcrumbs>
-        <h1>Site</h1>
-        <Stack>
-          <Flex>
-            <Input
-              placeholder="Search for Site"
-              rightSection={<IconSearch />}
-              style={{ height: "auto", width: "100%" }}
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value)
-              }}
-            />
-            <Drawer
-              opened={opened}
-              onClose={close}
-              position="right"
-              title="Add Site"
-            >
-              <TextInput style={{ marginTop: "2rem" }} label="Add Site No" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add Site Name" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add Num/PI" />
-              <Button
-                onClick={close}
-                style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+        {/* Body */}
+        <AppShell.Main>
+          <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
+            {items}
+          </Breadcrumbs>
+          <h1>Site</h1>
+          <Stack>
+            <Flex>
+              <Input
+                placeholder="Search for Site"
+                rightSection={<IconSearch />}
+                style={{ height: "auto", width: "100%" }}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                }}
+              />
+              <Drawer
+                opened={opened}
+                onClose={close}
+                position="right"
+                title="Add Site"
               >
-                Add Site
-              </Button>
-            </Drawer>
-            <div style={{ marginLeft: "2rem" }}>
-              <Button onClick={open}>Add Site</Button>
-            </div>
-          </Flex>
+                <TextInput style={{ marginTop: "2rem" }} label="Add Site No" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Site Name" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Num/PI" />
+                <Button
+                  onClick={close}
+                  style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+                >
+                  Add Site
+                </Button>
+              </Drawer>
+              <div style={{ marginLeft: "2rem" }}>
+                <Button onClick={open}>Add Site</Button>
+              </div>
+            </Flex>
 
-          <Table highlightOnHover styles={{ table: { width: "100%" } }}>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Site No</Table.Th>
-                <Table.Th styles={{ th: { width: 0 } }} />
-                <Table.Th>Site Name</Table.Th>
-                <Table.Th>Num/PI</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{data}</Table.Tbody>
-          </Table>
-        </Stack>
-      </AppShell.Main>
+            <Table highlightOnHover styles={{ table: { width: "100%" } }}>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Site No</Table.Th>
+                  <Table.Th styles={{ th: { width: 0 } }} />
+                  <Table.Th>Site Name</Table.Th>
+                  <Table.Th>Num/PI</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{data}</Table.Tbody>
+            </Table>
+          </Stack>
+        </AppShell.Main>
 
-      {/* Footer */}
-    </AppShell>
+        {/* Footer */}
+      </AppShell>
+    </ReqLogin>
   )
 }
 

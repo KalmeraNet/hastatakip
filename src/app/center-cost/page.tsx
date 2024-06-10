@@ -6,7 +6,8 @@ import { Stack, Text, Box, Input } from "@mantine/core"
 import ProjectsItem from "@/components/items/projectsItem"
 import { IconSearch } from "@tabler/icons-react"
 import { Project, projectApi } from "@/server"
-import { useUser } from "@/server/userContext"
+import { ReqLogin } from "@/components/ReqLogin"
+import { useUser } from "@/app/userContext"
 
 /*
 Projects
@@ -20,14 +21,14 @@ const CenterCost = (props: Props) => {
   const [projects, setProjects] = useState<Project[]>([])
   const user = useUser()
   useEffect(() => {
-    projectApi.getServerProject({userId: user.id})
-    .then((data) => {
-      setProjects(data)
-    })
-  }, [user.id])
+    projectApi.getServerProject({ userId: user?.id ?? '' })
+      .then((data) => {
+        setProjects(data)
+      })
+  }, [user?.id])
 
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header title="Centers" link="/menu" />
 
@@ -41,10 +42,10 @@ const CenterCost = (props: Props) => {
             placeholder="Search for Centers"
             rightSection={<IconSearch />}
             style={{ height: "auto", width: "100%", marginTop: ".5rem" }}
-            // value={search}
-            // onChange={(e) => {
-            //   setSearch(e.target.value)
-            // }}
+          // value={search}
+          // onChange={(e) => {
+          //   setSearch(e.target.value)
+          // }}
           />
         </Box>
         {projects.map((o) => {
@@ -53,7 +54,7 @@ const CenterCost = (props: Props) => {
               key={o.id}
               id={1}
               firstLine="Andre"
-              secondLine="AA"              
+              secondLine="AA"
               link={"/center-cost/" + o.id}
             />
           )
@@ -64,7 +65,7 @@ const CenterCost = (props: Props) => {
       <div style={{ marginTop: "1rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

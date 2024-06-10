@@ -21,6 +21,7 @@ import {
 import { AppShell, Table, Input } from "@mantine/core"
 import CroHeader from "@/components/croHeader"
 import CroNavbar from "@/components/croNavbar"
+import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
@@ -110,67 +111,69 @@ const CroSc = (props: Props) => {
     )
   }, [search])
   return (
-    <AppShell>
-      {/* Header */}
-      <CroHeader />
+    <ReqLogin>
+      <AppShell>
+        {/* Header */}
+        <CroHeader />
 
-      {/* Navbar */}
-      <CroNavbar />
+        {/* Navbar */}
+        <CroNavbar />
 
-      {/* Main */}
-      <AppShell.Main>
-        <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
-          {items}
-        </Breadcrumbs>
-        <h1>Side Coordinators</h1>
-        <Stack>
-          <Flex>
-            <Input
-              placeholder="Search for SC"
-              rightSection={<IconSearch />}
-              style={{ height: "auto", width: "100%" }}
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value)
-              }}
-            />
-            <Drawer
-              opened={opened}
-              onClose={close}
-              position="right"
-              title="Add SC"
-            >
-              <TextInput style={{ marginTop: "2rem" }} label="Add SC No" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add SC Name" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add SC Email" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add SC Cod" />
-              <Button
-                onClick={close}
-                style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+        {/* Main */}
+        <AppShell.Main>
+          <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
+            {items}
+          </Breadcrumbs>
+          <h1>Side Coordinators</h1>
+          <Stack>
+            <Flex>
+              <Input
+                placeholder="Search for SC"
+                rightSection={<IconSearch />}
+                style={{ height: "auto", width: "100%" }}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                }}
+              />
+              <Drawer
+                opened={opened}
+                onClose={close}
+                position="right"
+                title="Add SC"
               >
-                Add SC
-              </Button>
-            </Drawer>
-            <div style={{ marginLeft: "2rem" }}>
-              <Button onClick={open}>Add SC</Button>
-            </div>
-          </Flex>
+                <TextInput style={{ marginTop: "2rem" }} label="Add SC No" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add SC Name" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add SC Email" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add SC Cod" />
+                <Button
+                  onClick={close}
+                  style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+                >
+                  Add SC
+                </Button>
+              </Drawer>
+              <div style={{ marginLeft: "2rem" }}>
+                <Button onClick={open}>Add SC</Button>
+              </div>
+            </Flex>
 
-          <Table highlightOnHover styles={{ table: { width: "100%" } }}>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>SC No</Table.Th>
-                <Table.Th styles={{ th: { width: 0 } }} />
-                <Table.Th>SC Name</Table.Th>
-                <Table.Th>SC Email</Table.Th>
-                <Table.Th>SC Code</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{data}</Table.Tbody>
-          </Table>
-        </Stack>
-      </AppShell.Main>
-    </AppShell>
+            <Table highlightOnHover styles={{ table: { width: "100%" } }}>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>SC No</Table.Th>
+                  <Table.Th styles={{ th: { width: 0 } }} />
+                  <Table.Th>SC Name</Table.Th>
+                  <Table.Th>SC Email</Table.Th>
+                  <Table.Th>SC Code</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{data}</Table.Tbody>
+            </Table>
+          </Stack>
+        </AppShell.Main>
+      </AppShell>
+    </ReqLogin>
   )
 }
 

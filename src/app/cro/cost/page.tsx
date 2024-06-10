@@ -21,6 +21,7 @@ import {
 import { AppShell, Table, Input } from "@mantine/core"
 import CroHeader from "@/components/croHeader"
 import CroNavbar from "@/components/croNavbar"
+import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
@@ -110,67 +111,69 @@ const CroCost = (props: Props) => {
   }, [search])
 
   return (
-    <AppShell>
-      {/* Header */}
-      <CroHeader />
+    <ReqLogin>
+      <AppShell>
+        {/* Header */}
+        <CroHeader />
 
-      {/* Navbar */}
-      <CroNavbar />
+        {/* Navbar */}
+        <CroNavbar />
 
-      {/* Main */}
-      <AppShell.Main>
-        <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
-          {items}
-        </Breadcrumbs>
-        <h1>Costs</h1>
-        <Stack>
-          <Flex>
-            <Input
-              placeholder="Search for Cost"
-              rightSection={<IconSearch />}
-              style={{ height: "auto", width: "100%" }}
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value)
-              }}
-            />
-            <Drawer
-              opened={opened}
-              onClose={close}
-              position="right"
-              title="Add Cost"
-            >
-              <TextInput style={{ marginTop: "2rem" }} label="Add Cost No" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add Cost Name" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add Cost Email" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add Cost Cod" />
-              <Button
-                onClick={close}
-                style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+        {/* Main */}
+        <AppShell.Main>
+          <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
+            {items}
+          </Breadcrumbs>
+          <h1>Costs</h1>
+          <Stack>
+            <Flex>
+              <Input
+                placeholder="Search for Cost"
+                rightSection={<IconSearch />}
+                style={{ height: "auto", width: "100%" }}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                }}
+              />
+              <Drawer
+                opened={opened}
+                onClose={close}
+                position="right"
+                title="Add Cost"
               >
-                Add Cost
-              </Button>
-            </Drawer>
-            <div style={{ marginLeft: "2rem" }}>
-              <Button onClick={open}>Add Cost</Button>
-            </div>
-          </Flex>
+                <TextInput style={{ marginTop: "2rem" }} label="Add Cost No" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Cost Name" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Cost Email" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Cost Cod" />
+                <Button
+                  onClick={close}
+                  style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+                >
+                  Add Cost
+                </Button>
+              </Drawer>
+              <div style={{ marginLeft: "2rem" }}>
+                <Button onClick={open}>Add Cost</Button>
+              </div>
+            </Flex>
 
-          <Table highlightOnHover styles={{ table: { width: "100%" } }}>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Cost No</Table.Th>
-                <Table.Th styles={{ th: { width: 0 } }} />
-                <Table.Th>Cost Name</Table.Th>
-                <Table.Th>Cost Email</Table.Th>
-                <Table.Th>Cost Code</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{data}</Table.Tbody>
-          </Table>
-        </Stack>
-      </AppShell.Main>
-    </AppShell>
+            <Table highlightOnHover styles={{ table: { width: "100%" } }}>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Cost No</Table.Th>
+                  <Table.Th styles={{ th: { width: 0 } }} />
+                  <Table.Th>Cost Name</Table.Th>
+                  <Table.Th>Cost Email</Table.Th>
+                  <Table.Th>Cost Code</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{data}</Table.Tbody>
+            </Table>
+          </Stack>
+        </AppShell.Main>
+      </AppShell>
+    </ReqLogin>
   )
 }
 

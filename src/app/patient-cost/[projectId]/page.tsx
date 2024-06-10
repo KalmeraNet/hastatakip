@@ -6,7 +6,8 @@ import { Stack, Text, Box, Input } from "@mantine/core"
 import ListItem from "@/components/items/projectsItem"
 import { IconSearch } from "@tabler/icons-react"
 import { LocationResult, locationApi } from "@/server"
-import { useUser } from "@/server/userContext"
+import { useUser } from "@/app/userContext"
+import { ReqLogin } from "@/components/ReqLogin"
 
 /*
 Locations
@@ -25,10 +26,10 @@ const Locations = (props: Props) => {
     }).then((data) => {
       setLocations(data)
     })
-  }, [user.id, props.params.projectId])
+  }, [user?.id, props.params.projectId])
 
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header title="Locations" link="/cost" />
 
@@ -42,10 +43,10 @@ const Locations = (props: Props) => {
             placeholder="Search for Locations"
             rightSection={<IconSearch />}
             style={{ height: "auto", width: "100%", marginTop: ".5rem" }}
-            // value={search}
-            // onChange={(e) => {
-            //   setSearch(e.target.value)
-            // }}
+          // value={search}
+          // onChange={(e) => {
+          //   setSearch(e.target.value)
+          // }}
           />
         </Box>
         {locations.map((o) => {
@@ -65,7 +66,7 @@ const Locations = (props: Props) => {
       <div style={{ marginTop: "1rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

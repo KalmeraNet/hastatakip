@@ -4,7 +4,8 @@ import FormItem from "@/components/items/formItem"
 import Header from "@/components/header"
 import React, { useEffect, useState } from "react"
 import { FormResult, formApi } from "@/server"
-import { useUser } from "@/server/userContext"
+import { useUser } from "@/app/userContext"
+import { ReqLogin } from "@/components/ReqLogin"
 
 /*
 Form
@@ -23,34 +24,34 @@ const Forms = (props: Props) => {
     }).then((data) => {
       setForm(data)
     })
-  }, [user.id, props.params.formId])
+  }, [user?.id, props.params.formId])
 
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header title="FormName" link="/list" />
 
       {/* Body */}
-      <>
-        {form && (
-          <FormItem
-            key={form.id}
-            id={form.id ?? 0}
-            firstLine={form.name ?? ""}
-            secondLine={form.title ?? ""}
-            thirdLine={form.tip ?? ""}
-            po={form.po ?? ""}
-            price={form.price ?? 0}
-            date={form.date ?? ""}
-          />
-        )}
-      </>
+
+      {form && (
+        <FormItem
+          key={form.id}
+          id={form.id ?? 0}
+          firstLine={form.name ?? ""}
+          secondLine={form.title ?? ""}
+          thirdLine={form.tip ?? ""}
+          po={form.po ?? ""}
+          price={form.price ?? 0}
+          date={form.date ?? ""}
+        />
+      )}
+
 
       {/* Footer */}
       <div style={{ marginTop: "8rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

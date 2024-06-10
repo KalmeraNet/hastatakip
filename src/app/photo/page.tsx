@@ -3,6 +3,7 @@ import { ReactSketchCanvas } from "react-sketch-canvas"
 import { useState } from "react"
 import Link from "next/link"
 import { Button, Flex, Text } from "@mantine/core"
+import { ReqLogin } from "@/components/ReqLogin"
 
 const somePreserveAspectRatio = [
   "none",
@@ -37,7 +38,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <ReqLogin>
       <div className="d-flex flex-column gap-2 p-2">
         <h1>Photo</h1>
         <div className="d-flex gap-2 flex-column">
@@ -74,6 +75,6 @@ export default function App() {
           </Link>
         </Flex>
       </div>
-    </>
+    </ReqLogin>
   )
 }

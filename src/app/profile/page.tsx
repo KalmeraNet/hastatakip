@@ -1,3 +1,4 @@
+import { ReqLogin } from "@/components/ReqLogin"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import React from "react"
@@ -6,7 +7,7 @@ type Props = {}
 
 const Profile = (props: Props) => {
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header />
 
@@ -17,7 +18,7 @@ const Profile = (props: Props) => {
       <div style={{ marginTop: "1rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

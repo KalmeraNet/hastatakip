@@ -1,4 +1,5 @@
 "use client"
+import { ReqLogin } from "@/components/ReqLogin"
 import CroHeader from "@/components/croHeader"
 import CroNavbar from "@/components/croNavbar"
 import { AppShell } from "@mantine/core"
@@ -8,18 +9,20 @@ type Props = {}
 
 const ScProfile = (props: Props) => {
   return (
-    <AppShell>
-      {/* Header */}
-      <CroHeader />
+    <ReqLogin>
+      <AppShell>
+        {/* Header */}
+        <CroHeader />
 
-      {/* Navbar */}
-      <CroNavbar />
+        {/* Navbar */}
+        <CroNavbar />
 
-      {/* Main */}
-      <AppShell.Main>
-        <h1>Names - Surname</h1>
-      </AppShell.Main>
-    </AppShell>
+        {/* Main */}
+        <AppShell.Main>
+          <h1>Names - Surname</h1>
+        </AppShell.Main>
+      </AppShell>
+    </ReqLogin>
   )
 }
 

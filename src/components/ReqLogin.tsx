@@ -1,13 +1,26 @@
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 
 
 type Props = {
-    children?: React.ReactElement
 }
 
-export const ReqLogin = (props: Props) => {
+export const ReqLogin = (props: React.PropsWithChildren<Props>) => {
+    const { status } = useSession();
+    const router = useRouter();
+    useEffect(() => {
+        if (status === 'unauthenticated') {
+            void router.push('/');
+        }
+    }, [router, status]);
 
-    return <>{props.children}</>
+    return <>
+        {status === 'authenticated' && <>
+            {props.children}
+        </>}
+    </>
 
 
 }

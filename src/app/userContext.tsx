@@ -5,6 +5,8 @@ import { UserResult } from "../server/api"
 import { useSession } from "next-auth/react"
 import { userApi } from "@/server"
 
+const mem: { user: undefined | UserResult } = { user: undefined }
+
 export function useUser() {
   const [user, setUser] = useState<UserResult | null>()
 
@@ -12,14 +14,21 @@ export function useUser() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      userApi.getServerUser({ id: session.user?.email ?? '' })
-        .then(r => {
-          setUser(r)
-        })
-        .catch(err => {
-          setUser(null)
-        })
+      if (mem.user) {
+        setUser(mem.user)
+      } else {
+        userApi.getServerUser({ id: session.user?.email ?? '' })
+          .then(r => {
+            mem.user = r
+            setUser(r)
+          })
+          .catch(err => {
+            mem.user = undefined
+            setUser(null)
+          })
+      }
     } else {
+      mem.user = undefined
       setUser(null)
     }
   }, [session?.user, status])

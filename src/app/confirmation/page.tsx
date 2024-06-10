@@ -9,12 +9,12 @@ const Confirmation = (props: Props) => {
   return (
     <>
       {/* Header */}<Flex
-      justify="space-between"
-      align="center"
-      style={{ padding: "0 1.2rem", backgroundColor: "#ccc" }}
-    >
-      <h1>Confirmation</h1>
-    </Flex>
+        justify="space-between"
+        align="center"
+        style={{ padding: "0 1.2rem", backgroundColor: "#ccc" }}
+      >
+        <h1>Confirmation</h1>
+      </Flex>
 
       {/* Body */}
       <Flex
@@ -58,14 +58,14 @@ const Confirmation = (props: Props) => {
                 style={{ marginBottom: "3rem", fontSize: "16pt" }}
               />
             </div>
-              <Button
-                fullWidth
-                variant="filled"
-                color="indigo"
-                style={{ marginBottom: "1.5rem" }}
-              >
-                Login
-              </Button>
+            <Button
+              fullWidth
+              variant="filled"
+              color="indigo"
+              style={{ marginBottom: "1.5rem" }}
+            >
+              Login
+            </Button>
           </div>
         </Flex>
       </Flex>

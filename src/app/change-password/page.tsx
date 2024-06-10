@@ -1,3 +1,4 @@
+import { ReqLogin } from "@/components/ReqLogin"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { Button, Flex, PasswordInput, Text } from "@mantine/core"
@@ -8,7 +9,7 @@ type Props = {}
 const ChangePassword = (props: Props) => {
   // const user = useUser()
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header link="/menu" />
 
@@ -93,7 +94,7 @@ const ChangePassword = (props: Props) => {
       <div style={{ marginTop: "8rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

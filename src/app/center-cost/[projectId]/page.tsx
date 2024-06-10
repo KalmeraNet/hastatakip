@@ -25,7 +25,8 @@ import {
 } from "@mantine/core"
 import Link from "next/link"
 import { FormsResult, formsApi } from "@/server"
-import { useUser } from "@/server/userContext"
+import { useUser } from "@/app/userContext"
+import { ReqLogin } from "@/components/ReqLogin"
 
 /*
 Forms
@@ -40,14 +41,14 @@ type Props = {
 const tip = { konak: "Konaklama", ulas: "Transport" }
 
 const MasrafTipi = (props: Props) => {
-const [forms, setForms] = useState<FormsResult>()
+  const [forms, setForms] = useState<FormsResult>()
   const user = useUser()
   useEffect(() => {
-    formsApi.getServerForms({id: 0})
-    .then((data) => {
-      setForms(data)
-    })
-  }, [user.id])
+    formsApi.getServerForms({ id: 0 })
+      .then((data) => {
+        setForms(data)
+      })
+  }, [user?.id])
 
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
@@ -73,7 +74,7 @@ const [forms, setForms] = useState<FormsResult>()
   ))
 
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header title="Form" link="/cost" />
 
@@ -328,7 +329,7 @@ const [forms, setForms] = useState<FormsResult>()
       <div style={{ marginTop: "1rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

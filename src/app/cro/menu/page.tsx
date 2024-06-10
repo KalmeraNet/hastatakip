@@ -6,6 +6,7 @@ import { AppShell, Table } from "@mantine/core"
 import Link from "next/link"
 import CroHeader from "@/components/croHeader"
 import CroNavbar from "@/components/croNavbar"
+import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
@@ -86,109 +87,111 @@ const CroMenu = (props: Props) => {
   }, [search])
 
   return (
-    <AppShell>
-      {/* Header */}
-      <CroHeader />
+    <ReqLogin>
+      <AppShell>
+        {/* Header */}
+        <CroHeader />
 
-      {/* Navbar */}
-      <CroNavbar />
+        {/* Navbar */}
+        <CroNavbar />
 
-      {/* Main */}
-      <AppShell.Main>
-        <h1>Menu</h1>
-        <Grid
-          style={{
-            display: "flex",
-            marginTop: "2rem",
-          }}
-        >
-          <Grid.Col
+        {/* Main */}
+        <AppShell.Main>
+          <h1>Menu</h1>
+          <Grid
             style={{
-              margin: "2rem",
-              padding: "2rem",
-              background: "linear-gradient(90deg, #077577, #a24daf)",
+              display: "flex",
+              marginTop: "2rem",
             }}
-            span={3}
           >
-            <Link
-              href="cost"
+            <Grid.Col
               style={{
-                color: "white",
-                textDecoration: "none",
+                margin: "2rem",
+                padding: "2rem",
+                background: "linear-gradient(90deg, #077577, #a24daf)",
               }}
+              span={3}
             >
-              <Flex direction="column">
-                <Text size="lg">Cost</Text>
-                <div>2</div>
-                <div>3</div>
-              </Flex>
-            </Link>
-          </Grid.Col>
-          <Grid.Col
-            style={{
-              margin: "2rem",
-              marginLeft: "6rem",
-              padding: "2rem",
-              background: "linear-gradient(90deg, #077710, #4daf6c)",
-            }}
-            span={3}
-          >
-            <Link
-              href="cost"
+              <Link
+                href="cost"
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                <Flex direction="column">
+                  <Text size="lg">Cost</Text>
+                  <div>2</div>
+                  <div>3</div>
+                </Flex>
+              </Link>
+            </Grid.Col>
+            <Grid.Col
               style={{
-                color: "white",
-                textDecoration: "none",
+                margin: "2rem",
+                marginLeft: "6rem",
+                padding: "2rem",
+                background: "linear-gradient(90deg, #077710, #4daf6c)",
               }}
+              span={3}
             >
-              <Flex direction="column">
-                <Text size="lg">Cost</Text>
-                <div>2</div>
-                <div>3</div>
-              </Flex>
-            </Link>
-          </Grid.Col>
-          <Grid.Col
-            style={{
-              margin: "2rem",
-              marginLeft: "6rem",
-              padding: "2rem",
-              background: "linear-gradient(90deg, #edab1d, #af4d4d)",
-            }}
-            span={3}
-          >
-            <Link
-              href="cost"
+              <Link
+                href="cost"
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                <Flex direction="column">
+                  <Text size="lg">Cost</Text>
+                  <div>2</div>
+                  <div>3</div>
+                </Flex>
+              </Link>
+            </Grid.Col>
+            <Grid.Col
               style={{
-                color: "white",
-                textDecoration: "none",
+                margin: "2rem",
+                marginLeft: "6rem",
+                padding: "2rem",
+                background: "linear-gradient(90deg, #edab1d, #af4d4d)",
               }}
+              span={3}
             >
-              <Flex direction="column">
-                <Text size="lg">Cost</Text>
-                <div>2</div>
-                <div>3</div>
-              </Flex>
-            </Link>
-          </Grid.Col>
-        </Grid>
+              <Link
+                href="cost"
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                <Flex direction="column">
+                  <Text size="lg">Cost</Text>
+                  <div>2</div>
+                  <div>3</div>
+                </Flex>
+              </Link>
+            </Grid.Col>
+          </Grid>
 
-        <h1>Recent Costs</h1>
-        <Stack>
-          <Table highlightOnHover styles={{ table: { width: "100%" } }}>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Cost No</Table.Th>
-                <Table.Th styles={{ th: { width: 0 } }} />
-                <Table.Th>Cost Name</Table.Th>
-                <Table.Th>Cost Email</Table.Th>
-                <Table.Th>Cost Code</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{data}</Table.Tbody>
-          </Table>
-        </Stack>
-      </AppShell.Main>
-    </AppShell>
+          <h1>Recent Costs</h1>
+          <Stack>
+            <Table highlightOnHover styles={{ table: { width: "100%" } }}>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Cost No</Table.Th>
+                  <Table.Th styles={{ th: { width: 0 } }} />
+                  <Table.Th>Cost Name</Table.Th>
+                  <Table.Th>Cost Email</Table.Th>
+                  <Table.Th>Cost Code</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{data}</Table.Tbody>
+            </Table>
+          </Stack>
+        </AppShell.Main>
+      </AppShell>
+    </ReqLogin>
   )
 }
 

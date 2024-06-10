@@ -3,10 +3,11 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import React, { useEffect, useState } from "react"
 import { Stack, Text, Box, Input } from "@mantine/core"
-import { useUser } from "@/server/userContext"
+import { useUser } from "@/app/userContext"
 import ProjectsItem from "@/components/items/projectsItem"
 import { IconSearch } from "@tabler/icons-react"
 import { Project, projectApi } from "@/server"
+import { ReqLogin } from "@/components/ReqLogin"
 
 /*
 Projects
@@ -20,14 +21,14 @@ const HastaMasraf = (props: Props) => {
   const [projects, setProjects] = useState<Project[]>([])
   const user = useUser()
   useEffect(() => {
-    projectApi.getServerProject({userId: user.id})
-    .then((data) => {
-      setProjects(data)
-    })
-  }, [user.id])
+    projectApi.getServerProject({ userId: user?.id })
+      .then((data) => {
+        setProjects(data)
+      })
+  }, [user?.id])
 
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header title="Projects" link="/menu" />
 
@@ -41,10 +42,10 @@ const HastaMasraf = (props: Props) => {
             placeholder="Search for Projects"
             rightSection={<IconSearch />}
             style={{ height: "auto", width: "100%", marginTop: ".5rem" }}
-            // value={search}
-            // onChange={(e) => {
-            //   setSearch(e.target.value)
-            // }}
+          // value={search}
+          // onChange={(e) => {
+          //   setSearch(e.target.value)
+          // }}
           />
         </Box>
         {projects.map((o) => {
@@ -64,7 +65,7 @@ const HastaMasraf = (props: Props) => {
       <div style={{ marginTop: "1rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

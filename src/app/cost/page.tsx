@@ -1,4 +1,5 @@
 "use client"
+import { ReqLogin } from "@/components/ReqLogin"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { Flex, Grid, GridCol, Text } from "@mantine/core"
@@ -34,7 +35,7 @@ const arr: Props[] = [
 
 const MasrafId = (props: Props) => {
   return (
-    <>
+    <ReqLogin>
       <Flex
         direction="column"
         justify="center"
@@ -91,7 +92,7 @@ const MasrafId = (props: Props) => {
         {/* Footer */}
         <Footer />
       </Flex>
-    </>
+    </ReqLogin>
   )
 }
 

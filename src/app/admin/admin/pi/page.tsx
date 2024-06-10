@@ -21,6 +21,7 @@ import {
   IconTrash,
 } from "@tabler/icons-react"
 import { AppShell, Table, Input } from "@mantine/core"
+import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
@@ -110,69 +111,71 @@ const PI = (props: Props) => {
   }, [search])
 
   return (
-    <AppShell>
-      {/* Header */}
-      <AdminHeader />
+    <ReqLogin >
+      <AppShell>
+        {/* Header */}
+        <AdminHeader />
 
-      {/* Navbar */}
-      <AdminNavbar />
+        {/* Navbar */}
+        <AdminNavbar />
 
-      {/* Body */}
-      <AppShell.Main>
-        <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
-          {items}
-        </Breadcrumbs>
-        <h1>PI</h1>
-        <Stack>
-          <Flex>
-            <Input
-              placeholder="Search for PI"
-              rightSection={<IconSearch />}
-              style={{ height: "auto", width: "100%" }}
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value)
-              }}
-            />
-            <Drawer
-              opened={opened}
-              onClose={close}
-              position="right"
-              title="Add PI"
-            >
-              <TextInput style={{ marginTop: "2rem" }} label="Add PI No" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add PI Name" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add PI Email" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add PI Cod" />
-              <Button
-                onClick={close}
-                style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+        {/* Body */}
+        <AppShell.Main>
+          <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
+            {items}
+          </Breadcrumbs>
+          <h1>PI</h1>
+          <Stack>
+            <Flex>
+              <Input
+                placeholder="Search for PI"
+                rightSection={<IconSearch />}
+                style={{ height: "auto", width: "100%" }}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                }}
+              />
+              <Drawer
+                opened={opened}
+                onClose={close}
+                position="right"
+                title="Add PI"
               >
-                Add PI
-              </Button>
-            </Drawer>
-            <div style={{ marginLeft: "2rem" }}>
-              <Button onClick={open}>Add PI</Button>
-            </div>
-          </Flex>
+                <TextInput style={{ marginTop: "2rem" }} label="Add PI No" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add PI Name" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add PI Email" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add PI Cod" />
+                <Button
+                  onClick={close}
+                  style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+                >
+                  Add PI
+                </Button>
+              </Drawer>
+              <div style={{ marginLeft: "2rem" }}>
+                <Button onClick={open}>Add PI</Button>
+              </div>
+            </Flex>
 
-          <Table highlightOnHover styles={{ table: { width: "100%" } }}>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>PI No</Table.Th>
-                <Table.Th styles={{ th: { width: 0 } }} />
-                <Table.Th>PI Name</Table.Th>
-                <Table.Th>PI Project</Table.Th>
-                <Table.Th>PI Code</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{data}</Table.Tbody>
-          </Table>
-        </Stack>
-      </AppShell.Main>
+            <Table highlightOnHover styles={{ table: { width: "100%" } }}>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>PI No</Table.Th>
+                  <Table.Th styles={{ th: { width: 0 } }} />
+                  <Table.Th>PI Name</Table.Th>
+                  <Table.Th>PI Project</Table.Th>
+                  <Table.Th>PI Code</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{data}</Table.Tbody>
+            </Table>
+          </Stack>
+        </AppShell.Main>
 
-      {/* Footer */}
-    </AppShell>
+        {/* Footer */}
+      </AppShell>
+    </ReqLogin>
   )
 }
 

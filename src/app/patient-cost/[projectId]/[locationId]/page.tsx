@@ -25,7 +25,8 @@ import {
 } from "@mantine/core"
 import Link from "next/link"
 import { FormsResult, formsApi } from "@/server"
-import { useUser } from "@/server/userContext"
+import { useUser } from "@/app/userContext"
+import { ReqLogin } from "@/components/ReqLogin"
 
 /*
 Forms
@@ -48,7 +49,7 @@ const MasrafTipi = (props: Props) => {
     }).then((data) => {
       setForms(data)
     })
-  }, [user.id, props.formsId])
+  }, [user?.id, props.formsId])
 
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
@@ -74,7 +75,7 @@ const MasrafTipi = (props: Props) => {
   ))
 
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header title="Form" link="/cost" />
 
@@ -310,7 +311,7 @@ const MasrafTipi = (props: Props) => {
       <div style={{ marginTop: "1rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

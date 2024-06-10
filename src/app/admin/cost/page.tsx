@@ -3,6 +3,7 @@ import AdminHeader from "@/components/adminHeader"
 import AdminNavbar from "@/components/adminNavbar"
 import { Anchor, AppShell } from "@mantine/core"
 import AdminCost from "@/components/adminCost"
+import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
@@ -25,16 +26,19 @@ const items = [
 
 const CostSide = (props: Props) => {
   return (
-    <AppShell>
-      {/* Header */}
-      <AdminHeader />
+    <ReqLogin>
 
-      {/* Navbar */}
-      <AdminNavbar />
+      <AppShell>
+        {/* Header */}
+        <AdminHeader />
 
-      {/* Body */}
-      <AdminCost />
-    </AppShell>
+        {/* Navbar */}
+        <AdminNavbar />
+
+        {/* Body */}
+        <AdminCost />
+      </AppShell>
+    </ReqLogin>
   )
 }
 

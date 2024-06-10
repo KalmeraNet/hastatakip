@@ -3,9 +3,10 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import ListItem from "@/components/items/listItem"
 import { ListResult, listApi } from "@/server"
-import { useUser } from "@/server/userContext"
+import { useUser } from "@/app/userContext"
 import { Text } from "@mantine/core"
 import React, { useEffect, useState } from "react"
+import { ReqLogin } from "@/components/ReqLogin"
 
 /*
 List
@@ -20,14 +21,14 @@ const List = (props: Props) => {
   const user = useUser()
   useEffect(() => {
     listApi.getServerList({
-      userId: user.id,
+      userId: user?.id,
     }).then((data) => {
       setList(data)
     })
-  }, [user.id])
+  }, [user?.id])
 
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header title="Lists" link="/menu" />
 
@@ -57,7 +58,7 @@ const List = (props: Props) => {
       <div style={{ marginTop: "8rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

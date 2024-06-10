@@ -21,6 +21,7 @@ import {
   IconTrash,
 } from "@tabler/icons-react"
 import { AppShell, Table, Input } from "@mantine/core"
+import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
@@ -110,82 +111,85 @@ const Users = (props: Props) => {
     )
   }, [search])
   return (
-    <AppShell>
-      {/* Header */}
-      <AdminHeader />
 
-      {/* Navbar */}
-      <AdminNavbar />
+    <ReqLogin>
+      <AppShell>
+        {/* Header */}
+        <AdminHeader />
 
-      {/* Body */}
-      <AppShell.Main>
-        <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
-          {items}
-        </Breadcrumbs>
-        <h1>Users</h1>
-        <Stack>
-          <Flex>
-            <Input
-              placeholder="Search for Users"
-              rightSection={<IconSearch />}
-              style={{ height: "auto", width: "100%" }}
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value)
-              }}
-            />
-            <Drawer
-              opened={opened}
-              onClose={close}
-              position="right"
-              title="Add Users"
-            >
-              <TextInput style={{ marginTop: "1rem" }} label="Add Users No" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add Users Name" />
-              <TextInput
-                style={{ marginTop: "2rem" }}
-                label="Add Users Lastname"
+        {/* Navbar */}
+        <AdminNavbar />
+
+        {/* Body */}
+        <AppShell.Main>
+          <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
+            {items}
+          </Breadcrumbs>
+          <h1>Users</h1>
+          <Stack>
+            <Flex>
+              <Input
+                placeholder="Search for Users"
+                rightSection={<IconSearch />}
+                style={{ height: "auto", width: "100%" }}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                }}
               />
-              <TextInput
-                style={{ marginTop: "2rem" }}
-                label="Add Users Email"
-              />
-              <TextInput style={{ marginTop: "2rem" }} label="Add Users Type" />
-              <TextInput
-                style={{ marginTop: "2rem" }}
-                label="Add Users Trial"
-              />
-              <Button
-                onClick={close}
-                style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+              <Drawer
+                opened={opened}
+                onClose={close}
+                position="right"
+                title="Add Users"
               >
-                Add Users
-              </Button>
-            </Drawer>
-            <div style={{ marginLeft: "2rem" }}>
-              <Button onClick={open}>Add Users</Button>
-            </div>
-          </Flex>
+                <TextInput style={{ marginTop: "1rem" }} label="Add Users No" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Users Name" />
+                <TextInput
+                  style={{ marginTop: "2rem" }}
+                  label="Add Users Lastname"
+                />
+                <TextInput
+                  style={{ marginTop: "2rem" }}
+                  label="Add Users Email"
+                />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Users Type" />
+                <TextInput
+                  style={{ marginTop: "2rem" }}
+                  label="Add Users Trial"
+                />
+                <Button
+                  onClick={close}
+                  style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+                >
+                  Add Users
+                </Button>
+              </Drawer>
+              <div style={{ marginLeft: "2rem" }}>
+                <Button onClick={open}>Add Users</Button>
+              </div>
+            </Flex>
 
-          <Table highlightOnHover styles={{ table: { width: "100%" } }}>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Users No</Table.Th>
-                <Table.Th styles={{ th: { width: 0 } }} />
-                <Table.Th>Users Name</Table.Th>
-                <Table.Th>Users Lastname</Table.Th>
-                <Table.Th>Users Email</Table.Th>
-                <Table.Th>Users Type</Table.Th>
-                <Table.Th>Users Trial</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{data}</Table.Tbody>
-          </Table>
-        </Stack>
-      </AppShell.Main>
+            <Table highlightOnHover styles={{ table: { width: "100%" } }}>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Users No</Table.Th>
+                  <Table.Th styles={{ th: { width: 0 } }} />
+                  <Table.Th>Users Name</Table.Th>
+                  <Table.Th>Users Lastname</Table.Th>
+                  <Table.Th>Users Email</Table.Th>
+                  <Table.Th>Users Type</Table.Th>
+                  <Table.Th>Users Trial</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{data}</Table.Tbody>
+            </Table>
+          </Stack>
+        </AppShell.Main>
 
-      {/* Footer */}
-    </AppShell>
+        {/* Footer */}
+      </AppShell>
+    </ReqLogin>
   )
 }
 

@@ -5,8 +5,9 @@ import React, { useEffect, useState } from "react"
 import { Stack, Text, Box, Input } from "@mantine/core"
 import ProjectsItem from "@/components/items/projectsItem"
 import { IconSearch } from "@tabler/icons-react"
-import { useUser } from "@/server/userContext"
+import { useUser } from "@/app/userContext"
 import { Project, projectApi } from "@/server"
+import { ReqLogin } from "@/components/ReqLogin"
 
 /*
 Projects
@@ -20,13 +21,13 @@ const ScMasraf = (props: Props) => {
   const [projects, setProjects] = useState<Project[]>([])
   const user = useUser()
   useEffect(() => {
-    projectApi.getServerProject({ userId: user.id }).then((data) => {
+    projectApi.getServerProject({ userId: user?.id }).then((data) => {
       setProjects(data)
     })
-  }, [user.id])
+  }, [user?.id])
 
   return (
-    <>
+    <ReqLogin>
       {/* Header */}
       <Header title="Projects" link="/menu" />
 
@@ -63,7 +64,7 @@ const ScMasraf = (props: Props) => {
       <div style={{ marginTop: "1rem" }}>
         <Footer />
       </div>
-    </>
+    </ReqLogin>
   )
 }
 

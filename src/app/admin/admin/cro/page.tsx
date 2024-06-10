@@ -21,6 +21,7 @@ import {
   IconTrash,
 } from "@tabler/icons-react"
 import { AppShell, Table, Input } from "@mantine/core"
+import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
@@ -112,69 +113,71 @@ const CRO = (props: Props) => {
   }, [search])
 
   return (
-    <AppShell>
-      {/* Header */}
-      <AdminHeader />
+    <ReqLogin>
+      <AppShell>
+        {/* Header */}
+        <AdminHeader />
 
-      {/* Navbar */}
-      <AdminNavbar />
+        {/* Navbar */}
+        <AdminNavbar />
 
-      {/* Body */}
-      <AppShell.Main>
-        <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
-          {items}
-        </Breadcrumbs>
-        <h1>Clinical Research Organization</h1>
-        <Stack>
-          <Flex>
-            <Input
-              placeholder="Search for CRO"
-              rightSection={<IconSearch />}
-              style={{ height: "auto", width: "100%" }}
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value)
-              }}
-            />
-            <Drawer
-              opened={opened}
-              onClose={close}
-              position="right"
-              title="Add CRO"
-            >
-              <TextInput style={{ marginTop: "2rem" }} label="Add CRO No" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add CRO Name" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add CRO Email" />
-              <TextInput style={{ marginTop: "2rem" }} label="Add CRO Cod" />
-              <Button
-                onClick={close}
-                style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+        {/* Body */}
+        <AppShell.Main>
+          <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
+            {items}
+          </Breadcrumbs>
+          <h1>Clinical Research Organization</h1>
+          <Stack>
+            <Flex>
+              <Input
+                placeholder="Search for CRO"
+                rightSection={<IconSearch />}
+                style={{ height: "auto", width: "100%" }}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                }}
+              />
+              <Drawer
+                opened={opened}
+                onClose={close}
+                position="right"
+                title="Add CRO"
               >
-                Add CRO
-              </Button>
-            </Drawer>
-            <div style={{ marginLeft: "2rem" }}>
-              <Button onClick={open}>Add CRO</Button>
-            </div>
-          </Flex>
+                <TextInput style={{ marginTop: "2rem" }} label="Add CRO No" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add CRO Name" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add CRO Email" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add CRO Cod" />
+                <Button
+                  onClick={close}
+                  style={{ justifyItems: "flex-end", marginTop: "2rem" }}
+                >
+                  Add CRO
+                </Button>
+              </Drawer>
+              <div style={{ marginLeft: "2rem" }}>
+                <Button onClick={open}>Add CRO</Button>
+              </div>
+            </Flex>
 
-          <Table highlightOnHover styles={{ table: { width: "100%" } }}>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>CRO No</Table.Th>
-                <Table.Th styles={{ th: { width: 0 } }} />
-                <Table.Th>CRO Name</Table.Th>
-                <Table.Th>CRO Email</Table.Th>
-                <Table.Th>CRO Code</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{data}</Table.Tbody>
-          </Table>
-        </Stack>
-      </AppShell.Main>
+            <Table highlightOnHover styles={{ table: { width: "100%" } }}>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>CRO No</Table.Th>
+                  <Table.Th styles={{ th: { width: 0 } }} />
+                  <Table.Th>CRO Name</Table.Th>
+                  <Table.Th>CRO Email</Table.Th>
+                  <Table.Th>CRO Code</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{data}</Table.Tbody>
+            </Table>
+          </Stack>
+        </AppShell.Main>
 
-      {/* Footer */}
-    </AppShell>
+        {/* Footer */}
+      </AppShell>
+    </ReqLogin>
   )
 }
 

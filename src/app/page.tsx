@@ -1,17 +1,10 @@
 "use client"
 import { Button, Flex, Image, Text } from "@mantine/core"
-import Link from "next/link"
-import { useSession, signIn, signOut } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import { useUser } from "./userContext"
-import { useNavigate } from "react-router"
-import { getServerSession } from "next-auth"
-import { authOptions } from "./api/auth/[...nextauth]/route"
-import { redirect } from "next/navigation"
+
 
 type Props = {}
-
-
-
 
 const MenuControl = (props: Props) => {
   const user = useUser()
@@ -42,7 +35,7 @@ const MenuControl = (props: Props) => {
           Login
         </Button>}
         {user && <Button onClick={() => {
-          window.location.href = '/menu'
+          window.location.href = '/sc/menu'
         }}
           fullWidth
           w={240}

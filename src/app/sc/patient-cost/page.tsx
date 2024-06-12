@@ -3,9 +3,9 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import React, { useEffect, useState } from "react"
 import { Stack, Text, Box, Input } from "@mantine/core"
+import { useUser } from "@/app/userContext"
 import ProjectsItem from "@/components/items/projectsItem"
 import { IconSearch } from "@tabler/icons-react"
-import { useUser } from "@/app/userContext"
 import { Project, projectApi } from "@/server"
 import { ReqLogin } from "@/components/ReqLogin"
 
@@ -17,19 +17,20 @@ GetProjectsOutputParam
 
 type Props = {}
 
-const ScMasraf = (props: Props) => {
+const HastaMasraf = (props: Props) => {
   const [projects, setProjects] = useState<Project[]>([])
   const user = useUser()
   useEffect(() => {
-    projectApi.getServerProject({ userId: user?.id }).then((data) => {
-      setProjects(data)
-    })
+    projectApi.getServerProject({ userId: user?.id })
+      .then((data) => {
+        setProjects(data)
+      })
   }, [user?.id])
 
   return (
     <ReqLogin>
       {/* Header */}
-      <Header title="Projects" link="/menu" />
+      <Header title="Projects" link="/sc/menu" />
 
       {/* Body */}
       <Stack style={{ minHeight: "500px" }} gap={0}>
@@ -50,11 +51,11 @@ const ScMasraf = (props: Props) => {
         {projects.map((o) => {
           return (
             <ProjectsItem
-              key={o.id}
-              id={0}
-              firstLine="#6395ff"
-              secondLine="#f3f3f3"
-              link={"/sc-cost/" + o.id}
+              key={o.id ?? 0}
+              id={o.id ?? 0}
+              firstLine={o.name ?? ''}
+              secondLine={o.title ?? ''}
+              link={"/patient-cost/" + (o.id ?? 0)}
             />
           )
         })}
@@ -68,4 +69,4 @@ const ScMasraf = (props: Props) => {
   )
 }
 
-export default ScMasraf
+export default HastaMasraf

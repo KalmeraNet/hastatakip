@@ -18,7 +18,7 @@ const CroNavbar = (props: Props) => {
         <AppShell.Navbar style={{ padding: ".5rem", paddingTop: "1rem" }}>
           <NavLink label="Menu" href="/cro/menu" />
           <NavLink label="Cost" href="/cro/cost" />
-          <NavLink label="Side Coordinator" href="/cro/sc" />
+          <NavLink label="Site Coordinator" href="/cro/sc" />
           {/* <NavLink label="Admin" childrenOffset={38} defaultOpened>
             <NavLink label="Trial" href="/cro/cro/trial" />
             <NavLink label="Site" href="/cro/cro/site" />

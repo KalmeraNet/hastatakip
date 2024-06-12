@@ -35,7 +35,7 @@ const elements = [
 
 const items = [
   { title: "Menu", href: "/cro/menu" },
-  { title: "Side Coordinators", href: "/cro/sc" },
+  { title: "Site Coordinators", href: "/cro/sc" },
 ].map((item, index) => (
   <Anchor href={item.href} key={index}>
     {item.title}
@@ -124,7 +124,7 @@ const CroSc = (props: Props) => {
           <Breadcrumbs separator=">" separatorMargin="md" mt="xs">
             {items}
           </Breadcrumbs>
-          <h1>Side Coordinators</h1>
+          <h1>Site Coordinators</h1>
           <Stack>
             <Flex>
               <Input

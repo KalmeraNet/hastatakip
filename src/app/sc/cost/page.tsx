@@ -16,7 +16,7 @@ const arr: Props[] = [
   {
     id: 1,
     color: "linear-gradient(90deg, #077577, #a24daf)",
-    text: "Side Coordinator Cost",
+    text: "Site Coordinator Cost",
     link: "/sc-cost",
   },
   {

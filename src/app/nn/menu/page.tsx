@@ -5,17 +5,16 @@ import AdminNavbar from "@/components/adminNavbar"
 import { Button, Stack, Flex, Menu, rem, Grid, Text } from "@mantine/core"
 import { IconDotsVertical, IconEdit, IconTrash } from "@tabler/icons-react"
 import { AppShell, Table } from "@mantine/core"
-import Link from "next/link"
 import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
 const elements = [
-  { position: 6, lastname: "C@gmail.com", name: "Carbon", icon: "C6" },
-  { position: 7, lastname: "N@gmail.com", name: "Nitrogen", icon: "N7" },
-  { position: 39, lastname: "Y@gmail.com", name: "Yttrium", icon: "Y39" },
-  { position: 56, lastname: "Ba@gmail.com", name: "Barium", icon: "Ba56" },
-  { position: 58, lastname: "Ce@gmail.com", name: "Cerium", icon: "Ce58" },
+  { study: 6, site: "C@gmail.com", patient: "Carbon", type: "C6", amount: "100", date: "12.06.24", status: "Active" },
+  { study: 7, site: "N@gmail.com", patient: "Nitrogen", type: "N7", amount: "100", date: "12.06.24", status: "Active" },
+  { study: 39, site: "Y@gmail.com", patient: "Yttrium", type: "Y39", amount: "100", date: "12.06.24", status: "Active" },
+  { study: 56, site: "Ba@gmail.com", patient: "Barium", type: "Ba56", amount: "100", date: "12.06.24", status: "Active" },
+  { study: 58, site: "Ce@gmail.com", patient: "Cerium", type: "Ce58", amount: "100", date: "12.06.24", status: "Active" },
 ]
 
 const AdminMenu = (props: Props) => {
@@ -24,15 +23,15 @@ const AdminMenu = (props: Props) => {
   useEffect(() => {
     setData(
       elements
-        .filter((a) => a.name.indexOf(search) != -1 || search == "")
+        .filter((a) => a.patient.indexOf(search) != -1 || search == "")
         .map((element) => (
           <Table.Tr
-            key={element.name}
+            key={element.study}
             onClick={(e) => {
               alert("Please Edit")
             }}
           >
-            <Table.Td>{element.position}</Table.Td>
+            <Table.Td>{element.study}</Table.Td>
             <Table.Td>
               <div style={{ whiteSpace: "nowrap" }}>
                 <Menu position="left" offset={2} withArrow>
@@ -78,9 +77,12 @@ const AdminMenu = (props: Props) => {
                 </Menu>
               </div>
             </Table.Td>
-            <Table.Td>{element.name}</Table.Td>
-            <Table.Td>{element.lastname}</Table.Td>
-            <Table.Td>{element.icon}</Table.Td>
+            <Table.Td>{element.site}</Table.Td>
+            <Table.Td>{element.patient}</Table.Td>
+            <Table.Td>{element.type}</Table.Td>
+            <Table.Td>{element.amount}</Table.Td>
+            <Table.Td>{element.date}</Table.Td>
+            <Table.Td>{element.status}</Table.Td>
           </Table.Tr>
         ))
     )
@@ -97,7 +99,7 @@ const AdminMenu = (props: Props) => {
 
         {/* Main */}
         <AppShell.Main>
-          <h1>Admin Menu</h1>
+          <h1>Dashboard</h1>
           <Grid
             style={{
               display: "flex",
@@ -112,19 +114,17 @@ const AdminMenu = (props: Props) => {
               }}
               span={3}
             >
-              <Link
-                href="cost"
+              <div
                 style={{
                   color: "white",
                   textDecoration: "none",
                 }}
               >
                 <Flex direction="column">
-                  <Text size="lg">Cost</Text>
-                  <div>2</div>
-                  <div>3</div>
+                  <Text size="lg" style={{ marginBottom: "1rem" }}>Average monthly expense:</Text>
+                  <Text size="lg" fw={700}>20.000 TL</Text>
                 </Flex>
-              </Link>
+              </div>
             </Grid.Col>
             <Grid.Col
               style={{
@@ -135,19 +135,17 @@ const AdminMenu = (props: Props) => {
               }}
               span={3}
             >
-              <Link
-                href="cost"
+              <div
                 style={{
                   color: "white",
                   textDecoration: "none",
                 }}
               >
                 <Flex direction="column">
-                  <Text size="lg">Cost</Text>
-                  <div>2</div>
-                  <div>3</div>
+                  <Text size="lg" style={{ marginBottom: "1rem" }}>Active patients:</Text>
+                  <Text size="lg" fw={700}>24</Text>
                 </Flex>
-              </Link>
+              </div>
             </Grid.Col>
             <Grid.Col
               style={{
@@ -158,19 +156,17 @@ const AdminMenu = (props: Props) => {
               }}
               span={3}
             >
-              <Link
-                href="cost"
+              <div
                 style={{
                   color: "white",
                   textDecoration: "none",
                 }}
               >
                 <Flex direction="column">
-                  <Text size="lg">Cost</Text>
-                  <div>2</div>
-                  <div>3</div>
+                  <Text size="lg" style={{ marginBottom: "1rem" }}>Active trials:</Text>
+                  <Text size="md" fw={700}>32</Text>
                 </Flex>
-              </Link>
+              </div>
             </Grid.Col>
           </Grid>
 
@@ -179,11 +175,14 @@ const AdminMenu = (props: Props) => {
             <Table highlightOnHover styles={{ table: { width: "100%" } }}>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>Cost No</Table.Th>
+                  <Table.Th>Study Name</Table.Th>
                   <Table.Th styles={{ th: { width: 0 } }} />
-                  <Table.Th>Cost Name</Table.Th>
-                  <Table.Th>Cost Email</Table.Th>
-                  <Table.Th>Cost Code</Table.Th>
+                  <Table.Th>Site Name</Table.Th>
+                  <Table.Th>Patient Num</Table.Th>
+                  <Table.Th>Type</Table.Th>
+                  <Table.Th>Amount</Table.Th>
+                  <Table.Th>Date</Table.Th>
+                  <Table.Th>Status</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>{data}</Table.Tbody>

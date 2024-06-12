@@ -16,8 +16,8 @@ const elements = [
 ]
 
 const items = [
-  { title: "Menu", href: "/admin/menu" },
-  { title: "Costs", href: "/admin/cost" },
+  { title: "Menu", href: "/nn/menu" },
+  { title: "Costs", href: "/nn/cost" },
 ].map((item, index) => (
   <Anchor href={item.href} key={index}>
     {item.title}

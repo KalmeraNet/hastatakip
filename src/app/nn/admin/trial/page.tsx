@@ -26,16 +26,16 @@ import { ReqLogin } from "@/components/ReqLogin"
 type Props = {}
 
 const elements = [
-  { position: 6, lastname: "Aproved", name: "Carbon", icon: "C6" },
-  { position: 7, lastname: "Aproved", name: "Nitrogen", icon: "N7" },
-  { position: 39, lastname: "Decline", name: "Yttrium", icon: "Y39" },
-  { position: 56, lastname: "Pending", name: "Barium", icon: "Ba56" },
-  { position: 58, lastname: "Declined", name: "Cerium", icon: "Ce58" },
+  { position: 6, lastname: "Archived", name: "Carbon", icon: "C6" },
+  { position: 7, lastname: "Active", name: "Nitrogen", icon: "N7" },
+  { position: 39, lastname: "Closing", name: "Yttrium", icon: "Y39" },
+  { position: 56, lastname: "Planing", name: "Barium", icon: "Ba56" },
+  { position: 58, lastname: "Active", name: "Cerium", icon: "Ce58" },
 ]
 
 const items = [
-  { title: "Menu", href: "/admin/menu" },
-  { title: "Trials", href: "/admin/admin/trial" },
+  { title: "Menu", href: "/nn/menu" },
+  { title: "Trials", href: "/nn/admin/trial" },
 ].map((item, index) => (
   <Anchor href={item.href} key={index}>
     {item.title}

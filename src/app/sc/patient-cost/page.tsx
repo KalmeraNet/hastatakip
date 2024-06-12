@@ -55,7 +55,7 @@ const HastaMasraf = (props: Props) => {
               id={o.id ?? 0}
               firstLine={o.name ?? ''}
               secondLine={o.title ?? ''}
-              link={"/patient-cost/" + (o.id ?? 0)}
+              link={"/sc/patient-cost/" + (o.id ?? 0)}
             />
           )
         })}

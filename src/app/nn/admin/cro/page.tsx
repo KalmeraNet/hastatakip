@@ -35,8 +35,8 @@ const elements = [
 
 
 const items = [
-  { title: "Menu", href: "/admin/menu" },
-  { title: "CRO", href: "/admin/admin/cro" },
+  { title: "Menu", href: "/nn/menu" },
+  { title: "CRO", href: "/nn/admin/cro" },
 ].map((item, index) => (
   <Anchor href={item.href} key={index}>
     {item.title}
@@ -144,7 +144,7 @@ const CRO = (props: Props) => {
                 position="right"
                 title="Add CRO"
               >
-                <TextInput style={{ marginTop: "2rem" }} label="Add CRO No" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add No" />
                 <TextInput style={{ marginTop: "2rem" }} label="Add CRO Name" />
                 <TextInput style={{ marginTop: "2rem" }} label="Add CRO Email" />
                 <TextInput style={{ marginTop: "2rem" }} label="Add CRO Cod" />
@@ -163,7 +163,7 @@ const CRO = (props: Props) => {
             <Table highlightOnHover styles={{ table: { width: "100%" } }}>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>CRO No</Table.Th>
+                  <Table.Th>No</Table.Th>
                   <Table.Th styles={{ th: { width: 0 } }} />
                   <Table.Th>CRO Name</Table.Th>
                   <Table.Th>CRO Email</Table.Th>
@@ -174,8 +174,6 @@ const CRO = (props: Props) => {
             </Table>
           </Stack>
         </AppShell.Main>
-
-        {/* Footer */}
       </AppShell>
     </ReqLogin>
   )

@@ -9,7 +9,7 @@ const RaporConvert = (props: Props) => {
   return (
     <ReqLogin>
       {/* Header */}
-      <Header link="/reports" />
+      <Header link="/sc/reports" />
 
       {/* Body */}
 

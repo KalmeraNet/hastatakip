@@ -23,16 +23,16 @@ import { AppShell, Table, Input } from "@mantine/core"
 type Props = {}
 
 const elements = [
-  { position: 6, lastname: "C@gmail.com", name: "Carbon", icon: "C6" },
-  { position: 7, lastname: "N@gmail.com", name: "Nitrogen", icon: "N7" },
-  { position: 39, lastname: "Y@gmail.com", name: "Yttrium", icon: "Y39" },
-  { position: 56, lastname: "Ba@gmail.com", name: "Barium", icon: "Ba56" },
-  { position: 58, lastname: "Ce@gmail.com", name: "Cerium", icon: "Ce58" },
+  { study: 6, site: "C@gmail.com", patient: "Carbon", type: "C6", amount: "100", date: "12.02.24", status: "Active" },
+  { study: 7, site: "N@gmail.com", patient: "Nitrogen", type: "N7", amount: "600", date: "02.03.24", status: "Active" },
+  { study: 39, site: "Y@gmail.com", patient: "Yttrium", type: "Y39", amount: "1800", date: "01.06.24", status: "Active" },
+  { study: 56, site: "Ba@gmail.com", patient: "Barium", type: "Ba56", amount: "400", date: "24.04.24", status: "Active" },
+  { study: 58, site: "Ce@gmail.com", patient: "Cerium", type: "Ce58", amount: "800", date: "15.02.24", status: "Active" },
 ]
 
 const items = [
-  { title: "Menu", href: "/admin/menu" },
-  { title: "Costs", href: "/admin/admin/cost" },
+  { title: "Menu", href: "/nn/menu" },
+  { title: "Costs", href: "/nn/admin/cost" },
 ].map((item, index) => (
   <Anchor href={item.href} key={index}>
     {item.title}
@@ -46,15 +46,15 @@ const AdminCost = (props: Props) => {
   useEffect(() => {
     setData(
       elements
-        .filter((a) => a.name.indexOf(search) != -1 || search == "")
+        .filter((a) => a.patient.indexOf(search) != -1 || search == "")
         .map((element) => (
           <Table.Tr
-            key={element.name}
+            key={element.study}
             onClick={(e) => {
               alert("Please Edit")
             }}
           >
-            <Table.Td>{element.position}</Table.Td>
+            <Table.Td>{element.study}</Table.Td>
             <Table.Td>
               <div style={{ whiteSpace: "nowrap" }}>
                 <Menu position="left" offset={2} withArrow>
@@ -100,9 +100,12 @@ const AdminCost = (props: Props) => {
                 </Menu>
               </div>
             </Table.Td>
-            <Table.Td>{element.name}</Table.Td>
-            <Table.Td>{element.lastname}</Table.Td>
-            <Table.Td>{element.icon}</Table.Td>
+            <Table.Td>{element.site}</Table.Td>
+            <Table.Td>{element.patient}</Table.Td>
+            <Table.Td>{element.type}</Table.Td>
+            <Table.Td>{element.amount} TL</Table.Td>
+            <Table.Td>{element.date}</Table.Td>
+            <Table.Td>{element.status}</Table.Td>
           </Table.Tr>
         ))
     )
@@ -152,11 +155,14 @@ const AdminCost = (props: Props) => {
           <Table highlightOnHover styles={{ table: { width: "100%" } }}>
             <Table.Thead>
               <Table.Tr>
-                <Table.Th>Cost No</Table.Th>
+                <Table.Th>Study Name</Table.Th>
                 <Table.Th styles={{ th: { width: 0 } }} />
-                <Table.Th>Cost Name</Table.Th>
-                <Table.Th>Cost Email</Table.Th>
-                <Table.Th>Cost Code</Table.Th>
+                <Table.Th>Site Name</Table.Th>
+                <Table.Th>Patient Num</Table.Th>
+                <Table.Th>Type</Table.Th>
+                <Table.Th>Amount</Table.Th>
+                <Table.Th>Date</Table.Th>
+                <Table.Th>Status</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>{data}</Table.Tbody>

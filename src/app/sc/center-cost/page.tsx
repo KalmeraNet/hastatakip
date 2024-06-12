@@ -55,7 +55,7 @@ const CenterCost = (props: Props) => {
               id={1}
               firstLine="Andre"
               secondLine="AA"
-              link={"/center-cost/" + o.id}
+              link={"/sc/center-cost/" + o.id}
             />
           )
         })}

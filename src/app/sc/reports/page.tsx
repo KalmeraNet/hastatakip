@@ -41,7 +41,7 @@ const Reports = (props: Props) => {
             po={o.price ?? ""}
             date={o.date ?? ""}
             price={o.costType ?? 0}
-            link={"/reports/" + o.id}
+            link={"/sc/reports/" + o.id}
           />
         )
       })}

@@ -29,7 +29,7 @@ const Forms = (props: Props) => {
   return (
     <ReqLogin>
       {/* Header */}
-      <Header title="FormName" link="/list" />
+      <Header title="FormName" link="/sc/list" />
 
       {/* Body */}
 

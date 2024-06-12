@@ -17,19 +17,19 @@ const arr: Props[] = [
     id: 1,
     color: "linear-gradient(90deg, #077577, #a24daf)",
     text: "Site Coordinator Cost",
-    link: "/sc-cost",
+    link: "/sc/sc-cost",
   },
   {
     id: 2,
     color: "linear-gradient(90deg, #077710, #4daf6c)",
     text: "Patient Cost",
-    link: "/patient-cost",
+    link: "/sc/patient-cost",
   },
   {
     id: 3,
     color: "linear-gradient(90deg, #edab1d, #af4d4d)",
     text: "Center Cost",
-    link: "/center-cost",
+    link: "/sc/center-cost",
   },
 ]
 

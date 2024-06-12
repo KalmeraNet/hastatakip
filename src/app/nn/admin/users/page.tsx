@@ -34,8 +34,8 @@ const elements = [
 ]
 
 const items = [
-  { title: "Menu", href: "/admin/menu" },
-  { title: "Users", href: "/admin/admin/users" },
+  { title: "Menu", href: "/nn/menu" },
+  { title: "Users", href: "/nn/admin/users" },
 ].map((item, index) => (
   <Anchor href={item.href} key={index}>
     {item.title}

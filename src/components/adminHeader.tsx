@@ -37,7 +37,7 @@ const AdminHeader = (props: Props) => {
         >
           <Link
             style={{ textDecoration: "none", color: "#000" }}
-            href="/admin/menu"
+            href="/nn/menu"
           >
             <Image h={92} src="/logo.png" alt="logo" />
           </Link>

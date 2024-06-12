@@ -63,7 +63,7 @@ export default function App() {
         />
 
         <Flex justify="left" style={{ margin: "1.2rem" }}>
-          <Link href="/cost">
+          <Link href="/sc/cost">
             <Button
               style={{
                 width: "100px",

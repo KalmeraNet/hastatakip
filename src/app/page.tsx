@@ -45,7 +45,7 @@ const MenuControl = (props: Props) => {
 
         >Goto SC Menu</Button>}
         {user && <Button onClick={() => {
-          window.location.href = '/admin/menu'
+          window.location.href = '/nn/menu'
         }}
           fullWidth
           w={240}

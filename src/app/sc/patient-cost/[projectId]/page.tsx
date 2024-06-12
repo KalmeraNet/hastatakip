@@ -31,7 +31,7 @@ const Locations = (props: Props) => {
   return (
     <ReqLogin>
       {/* Header */}
-      <Header title="Locations" link="/cost" />
+      <Header title="Locations" link="/sc/cost" />
 
       {/* Body */}
       <Stack style={{ minHeight: "500px" }} gap={0}>
@@ -56,7 +56,7 @@ const Locations = (props: Props) => {
               id={o.id ?? 0}
               firstLine={o.name ?? ""}
               secondLine={o.title ?? ""}
-              link={"/patient-cost/" + props.params.projectId + "/" + o.id}
+              link={"/sc/patient-cost/" + props.params.projectId + "/" + o.id}
             />
           )
         })}

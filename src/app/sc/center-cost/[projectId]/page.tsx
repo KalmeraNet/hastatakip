@@ -76,7 +76,7 @@ const MasrafTipi = (props: Props) => {
   return (
     <ReqLogin>
       {/* Header */}
-      <Header title="Form" link="/cost" />
+      <Header title="Form" link="/sc/cost" />
 
       {/* Body */}
       <Stack style={{ minHeight: "500px" }} gap={0}>

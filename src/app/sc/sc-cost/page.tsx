@@ -54,7 +54,7 @@ const ScMasraf = (props: Props) => {
               id={0}
               firstLine="#6395ff"
               secondLine="#f3f3f3"
-              link={"/sc-cost/" + o.id}
+              link={"/sc/sc-cost/" + o.id}
             />
           )
         })}

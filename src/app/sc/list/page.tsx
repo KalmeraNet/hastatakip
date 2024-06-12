@@ -48,7 +48,7 @@ const List = (props: Props) => {
               date={o.date ?? ""}
               price={o.costType ?? 0}
               po={o.title ?? ""}
-              link={"/list/" + o.id}
+              link={"/sc/list/" + o.id}
             />
           )
         })}

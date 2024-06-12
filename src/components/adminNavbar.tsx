@@ -15,14 +15,14 @@ const AdminNavbar = (props: Props) => {
         padding="md"
       >
         <AppShell.Navbar style={{ padding: ".5rem", paddingTop: "1rem" }}>
-          <NavLink label="Menu" href="/admin/menu" />
-          <NavLink label="Cost" href="/admin/cost" />
+          <NavLink label="Menu" href="/nn/menu" />
+          <NavLink label="Cost" href="/nn/cost" />
           <NavLink label="Admin" childrenOffset={38} defaultOpened>
-            <NavLink label="Trial" href="/admin/admin/trial" />
-            <NavLink label="Site" href="/admin/admin/site" />
-            <NavLink label="CRO" href="/admin/admin/cro" />
-            <NavLink label="PI" href="/admin/admin/pi" />
-            <NavLink label="Users" href="/admin/admin/users" />
+            <NavLink label="Trial" href="/nn/admin/trial" />
+            <NavLink label="Site" href="/nn/admin/site" />
+            <NavLink label="CRO" href="/nn/admin/cro" />
+            <NavLink label="PI" href="/nn/admin/pi" />
+            <NavLink label="Users" href="/nn/admin/users" />
           </NavLink>
         </AppShell.Navbar>
       </AppShell>

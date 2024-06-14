@@ -7,14 +7,6 @@ import { ReqLogin } from "@/components/ReqLogin"
 
 type Props = {}
 
-const elements = [
-  { position: 6, lastname: "C", name: "Carbon", icon: "C6" },
-  { position: 7, lastname: "N", name: "Nitrogen", icon: "N7" },
-  { position: 39, lastname: "Y", name: "Yttrium", icon: "Y39" },
-  { position: 56, lastname: "Ba", name: "Barium", icon: "Ba56" },
-  { position: 58, lastname: "Ce", name: "Cerium", icon: "Ce58" },
-]
-
 const items = [
   { title: "Menu", href: "/nn/menu" },
   { title: "Costs", href: "/nn/cost" },

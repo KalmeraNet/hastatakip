@@ -52,7 +52,7 @@ const ScMasraf = (props: Props) => {
             <ProjectsItem
               key={o.id}
               id={0}
-              firstLine="#6395ff"
+              firstLine="Andre"
               secondLine="#f3f3f3"
               link={"/sc/sc-cost/" + o.id}
             />

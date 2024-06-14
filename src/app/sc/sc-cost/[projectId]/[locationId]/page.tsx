@@ -61,9 +61,9 @@ const MasrafTipi = (props: Props) => {
       }
     },
   })
-  const lines = [tip.konak, tip.ulas, "Food", "Other"]
+  const lines = [tip.konak, tip.ulas, "FB", "Other"]
 
-  const [value, setValue] = useState<string | null>("Accomodation")
+  const [value, setValue] = useState<string | null>("Transport")
 
   const options = lines.map((item) => (
     <ComboboxOption value={item} key={item} active={item === value}>
@@ -290,7 +290,7 @@ const MasrafTipi = (props: Props) => {
           }}
         >
           <Text size="lg" fw={500}>
-            Photo:
+            Attachment:
           </Text>
 
           <Link href="/photo">

@@ -38,7 +38,7 @@ type Props = {
   formsId: string
 }
 
-const tip = { konak: "Konaklama", ulas: "Transport" }
+const tip = { konak: "Accomodation", ulas: "Transport" }
 
 const MasrafTipi = (props: Props) => {
   const [forms, setForms] = useState<FormsResult>()
@@ -60,9 +60,9 @@ const MasrafTipi = (props: Props) => {
       }
     },
   })
-  const lines = [tip.konak, tip.ulas, "Yemek", "Diğer"]
+  const lines = [tip.konak, tip.ulas, "FB", "Other"]
 
-  const [value, setValue] = useState<string | null>("Konaklama")
+  const [value, setValue] = useState<string | null>("Transport")
 
   const options = lines.map((item) => (
     <ComboboxOption value={item} key={item} active={item === value}>
@@ -288,7 +288,7 @@ const MasrafTipi = (props: Props) => {
           }}
         >
           <Text size="lg" fw={500}>
-            Photo:
+            Attachment:
           </Text>
 
           <Link href="/photo">

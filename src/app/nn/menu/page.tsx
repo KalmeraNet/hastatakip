@@ -10,11 +10,11 @@ import { ReqLogin } from "@/components/ReqLogin"
 type Props = {}
 
 const elements = [
-  { study: 6, site: "C@gmail.com", patient: "Carbon", type: "C6", amount: "100", date: "12.06.24", status: "Active" },
-  { study: 7, site: "N@gmail.com", patient: "Nitrogen", type: "N7", amount: "100", date: "12.06.24", status: "Active" },
-  { study: 39, site: "Y@gmail.com", patient: "Yttrium", type: "Y39", amount: "100", date: "12.06.24", status: "Active" },
-  { study: 56, site: "Ba@gmail.com", patient: "Barium", type: "Ba56", amount: "100", date: "12.06.24", status: "Active" },
-  { study: 58, site: "Ce@gmail.com", patient: "Cerium", type: "Ce58", amount: "100", date: "12.06.24", status: "Active" },
+  { study: "EX2211-3748", site: "721", patient: "null", type: "Accomidation", amount: "2500", date: "12.02.24", status: "Active" },
+  { study: "EX2211-3748", site: "722", patient: "null", type: "Transportation", amount: "600", date: "02.03.24", status: "Active" },
+  { study: "EX6018-4758", site: "860", patient: "null", type: "Transportation", amount: "1800", date: "01.06.24", status: "Active" },
+  { study: "EX6018-4915", site: "8400", patient: "null", type: "FB", amount: "400", date: "24.04.24", status: "Active" },
+  { study: "EX6018-4979", site: "3700", patient: "null", type: "FB", amount: "800", date: "15.02.24", status: "Active" },
 ]
 
 const AdminMenu = (props: Props) => {

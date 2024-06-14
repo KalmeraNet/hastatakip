@@ -26,11 +26,11 @@ import { ReqLogin } from "@/components/ReqLogin"
 type Props = {}
 
 const elements = [
-  { position: 6, lastname: "C", name: "Carbon", icon: "C6" },
-  { position: 7, lastname: "N", name: "Nitrogen", icon: "N7" },
-  { position: 39, lastname: "Y", name: "Yttrium", icon: "Y39" },
-  { position: 56, lastname: "Ba", name: "Barium", icon: "Ba56" },
-  { position: 58, lastname: "Ce", name: "Cerium", icon: "Ce58" },
+  { position: 6, lastname: "Arslan", name: "Canan", email: "canan.arslan@example.com", type: "SC", trial: "EX6018-4758" },
+  { position: 7, lastname: "Doğan", name: "Ömer", email: "omer.dogan@example.com", type: "CRO", trial: "EX6018-4758" },
+  { position: 39, lastname: "Polat", name: "Selin ", email: "selin.polat@example.com", type: "CRO", trial: "EX6018-4915" },
+  { position: 56, lastname: "Koç", name: "Kerem", email: "kerem.koc@example.com", type: "Patient", trial: "EX6018-4758" },
+  { position: 58, lastname: "Türkmen", name: "Buse", email: "buse.turkmen@example.com", type: "Patient", trial: "EX6018-4979" },
 ]
 
 const items = [
@@ -105,7 +105,9 @@ const Users = (props: Props) => {
             </Table.Td>
             <Table.Td>{element.name}</Table.Td>
             <Table.Td>{element.lastname}</Table.Td>
-            <Table.Td>{element.icon}</Table.Td>
+            <Table.Td>{element.email}</Table.Td>
+            <Table.Td>{element.type}</Table.Td>
+            <Table.Td>{element.trial}</Table.Td>
           </Table.Tr>
         ))
     )
@@ -173,13 +175,13 @@ const Users = (props: Props) => {
             <Table highlightOnHover styles={{ table: { width: "100%" } }}>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>Users No</Table.Th>
+                  <Table.Th>No</Table.Th>
                   <Table.Th styles={{ th: { width: 0 } }} />
-                  <Table.Th>Users Name</Table.Th>
-                  <Table.Th>Users Lastname</Table.Th>
-                  <Table.Th>Users Email</Table.Th>
-                  <Table.Th>Users Type</Table.Th>
-                  <Table.Th>Users Trial</Table.Th>
+                  <Table.Th>Name</Table.Th>
+                  <Table.Th>Lastname</Table.Th>
+                  <Table.Th>Email</Table.Th>
+                  <Table.Th>Type</Table.Th>
+                  <Table.Th>Trial</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>{data}</Table.Tbody>

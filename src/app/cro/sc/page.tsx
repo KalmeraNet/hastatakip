@@ -150,10 +150,10 @@ const CroSc = (props: Props) => {
                 position="right"
                 title="Add SC"
               >
-                <TextInput style={{ marginTop: "2rem" }} label="Add SC No" />
-                <TextInput style={{ marginTop: "2rem" }} label="Add SC Name" />
-                <TextInput style={{ marginTop: "2rem" }} label="Add SC Email" />
-                <TextInput style={{ marginTop: "2rem" }} label="Add SC Cod" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add No" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Name" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Email" />
+                <TextInput style={{ marginTop: "2rem" }} label="Add Cod" />
                 <Button
                   onClick={close}
                   style={{ justifyItems: "flex-end", marginTop: "2rem" }}
@@ -169,11 +169,11 @@ const CroSc = (props: Props) => {
             <Table highlightOnHover styles={{ table: { width: "100%" } }}>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>SC No</Table.Th>
+                  <Table.Th>No</Table.Th>
                   <Table.Th styles={{ th: { width: 0 } }} />
-                  <Table.Th>SC Name</Table.Th>
-                  <Table.Th>SC Email</Table.Th>
-                  <Table.Th>SC Code</Table.Th>
+                  <Table.Th>Name</Table.Th>
+                  <Table.Th>Email</Table.Th>
+                  <Table.Th>Code</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>{data}</Table.Tbody>

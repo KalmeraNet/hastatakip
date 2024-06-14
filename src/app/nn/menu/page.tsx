@@ -110,6 +110,7 @@ const AdminMenu = (props: Props) => {
               style={{
                 margin: "2rem",
                 padding: "2rem",
+                borderRadius: "15px",
                 background: "linear-gradient(90deg, #076177, #4d84af)",
               }}
               span={3}
@@ -131,6 +132,7 @@ const AdminMenu = (props: Props) => {
                 margin: "2rem",
                 marginLeft: "6rem",
                 padding: "2rem",
+                borderRadius: "15px",
                 background: "linear-gradient(90deg, #770707, #af4d4d)",
               }}
               span={3}
@@ -152,6 +154,7 @@ const AdminMenu = (props: Props) => {
                 margin: "2rem",
                 marginLeft: "6rem",
                 padding: "2rem",
+                borderRadius: "15px",
                 background: "linear-gradient(90deg, #470777, #a04daf)",
               }}
               span={3}

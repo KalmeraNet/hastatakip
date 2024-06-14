@@ -26,11 +26,11 @@ import { ReqLogin } from "@/components/ReqLogin"
 type Props = {}
 
 const elements = [
-  { position: 6, lastname: "C@gmail.com", name: "Carbon", icon: "C6" },
-  { position: 7, lastname: "N@gmail.com", name: "Nitrogen", icon: "N7" },
-  { position: 39, lastname: "Y@gmail.com", name: "Yttrium", icon: "Y39" },
-  { position: 56, lastname: "Ba@gmail.com", name: "Barium", icon: "Ba56" },
-  { position: 58, lastname: "Ce@gmail.com", name: "Cerium", icon: "Ce58" },
+  { study: "EX2211-3748", site: "721", patient: "null", type: "Accomidation", amount: "2500", date: "12.02.24", status: "Active" },
+  { study: "EX2211-3748", site: "722", patient: "null", type: "Transportation", amount: "600", date: "02.03.24", status: "Active" },
+  { study: "EX6018-4758", site: "860", patient: "null", type: "Transportation", amount: "1800", date: "01.06.24", status: "Active" },
+  { study: "EX6018-4915", site: "8400", patient: "null", type: "FB", amount: "400", date: "24.04.24", status: "Active" },
+  { study: "EX6018-4979", site: "3700", patient: "null", type: "FB", amount: "800", date: "15.02.24", status: "Active" },
 ]
 
 const items = [
@@ -48,15 +48,13 @@ const CroCost = (props: Props) => {
   useEffect(() => {
     setData(
       elements
-        .filter((a) => a.name.indexOf(search) != -1 || search == "")
+        .filter((a) => a.study.indexOf(search) != -1 || search == "")
         .map((element) => (
           <Table.Tr
-            key={element.name}
-            onClick={(e) => {
-              alert("Please Edit")
-            }}
+            key={element.study}
+            onClick={open}
           >
-            <Table.Td>{element.position}</Table.Td>
+            <Table.Td>{element.study}</Table.Td>
             <Table.Td>
               <div style={{ whiteSpace: "nowrap" }}>
                 <Menu position="left" offset={2} withArrow>
@@ -102,13 +100,16 @@ const CroCost = (props: Props) => {
                 </Menu>
               </div>
             </Table.Td>
-            <Table.Td>{element.name}</Table.Td>
-            <Table.Td>{element.lastname}</Table.Td>
-            <Table.Td>{element.icon}</Table.Td>
+            <Table.Td>{element.site}</Table.Td>
+            <Table.Td>{element.patient}</Table.Td>
+            <Table.Td>{element.type}</Table.Td>
+            <Table.Td>{element.amount} TL</Table.Td>
+            <Table.Td>{element.date}</Table.Td>
+            <Table.Td>{element.status}</Table.Td>
           </Table.Tr>
         ))
     )
-  }, [search])
+  }, [open, search])
 
   return (
     <ReqLogin>
@@ -142,10 +143,12 @@ const CroCost = (props: Props) => {
                 position="right"
                 title="Add Cost"
               >
-                <TextInput style={{ marginTop: "2rem" }} label="Add Cost No" />
-                <TextInput style={{ marginTop: "2rem" }} label="Add Cost Name" />
-                <TextInput style={{ marginTop: "2rem" }} label="Add Cost Email" />
-                <TextInput style={{ marginTop: "2rem" }} label="Add Cost Cod" />
+                <TextInput style={{ marginTop: "2rem" }} label="Study Name" />
+                <TextInput style={{ marginTop: "2rem" }} label="Site Name" />
+                <TextInput style={{ marginTop: "2rem" }} label="Patient Num" />
+                <TextInput style={{ marginTop: "2rem" }} label="Type" />
+                <TextInput style={{ marginTop: "2rem" }} label="Amount" />
+                <TextInput style={{ marginTop: "2rem" }} label="Status" />
                 <Button
                   onClick={close}
                   style={{ justifyItems: "flex-end", marginTop: "2rem" }}
@@ -161,11 +164,14 @@ const CroCost = (props: Props) => {
             <Table highlightOnHover styles={{ table: { width: "100%" } }}>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>Cost No</Table.Th>
+                  <Table.Th>Study Name</Table.Th>
                   <Table.Th styles={{ th: { width: 0 } }} />
-                  <Table.Th>Cost Name</Table.Th>
-                  <Table.Th>Cost Email</Table.Th>
-                  <Table.Th>Cost Code</Table.Th>
+                  <Table.Th>Site Name</Table.Th>
+                  <Table.Th>Patient Num</Table.Th>
+                  <Table.Th>Type</Table.Th>
+                  <Table.Th>Amount</Table.Th>
+                  <Table.Th>Date</Table.Th>
+                  <Table.Th>Status</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>{data}</Table.Tbody>

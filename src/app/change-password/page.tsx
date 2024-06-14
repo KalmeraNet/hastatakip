@@ -1,7 +1,8 @@
 import { ReqLogin } from "@/components/ReqLogin"
 import Footer from "@/components/footer"
-import Header from "@/components/header"
 import { Button, Flex, PasswordInput, Text } from "@mantine/core"
+import { IconChevronLeft } from "@tabler/icons-react"
+import Link from "next/link"
 import React from "react"
 
 type Props = {}
@@ -11,7 +12,23 @@ const ChangePassword = (props: Props) => {
   return (
     <ReqLogin>
       {/* Header */}
-      <Header link="/sc/menu" />
+      <Flex
+        justify="space-between"
+        align="center"
+        style={{ padding: "0 1.2rem", backgroundColor: "#ccc" }}
+      >
+        <Link href="/">
+          <IconChevronLeft
+            style={{
+              color: "#000",
+              textDecoration: "none",
+              marginTop: ".5rem",
+            }}
+          />
+        </Link>
+        <h1>Change Password</h1>
+      </Flex>
+
 
       {/* Body */}
       <div style={{ marginBottom: "17rem" }}>
@@ -21,15 +38,17 @@ const ChangePassword = (props: Props) => {
           justify="space-between"
         >
           <Text style={{ marginLeft: "1rem" }}>Change Password</Text>
-          <Button
-            style={{
-              width: "100px",
-              background: "#6395ff",
-              marginRight: "1rem",
-            }}
-          >
-            Save
-          </Button>
+          <Link href="/">
+            <Button
+              style={{
+                width: "100px",
+                background: "#6395ff",
+                marginRight: "1rem",
+              }}
+            >
+              Save
+            </Button>
+          </Link>
         </Flex>
 
         <Flex

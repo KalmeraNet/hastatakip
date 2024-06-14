@@ -26,11 +26,19 @@ import { ReqLogin } from "@/components/ReqLogin"
 type Props = {}
 
 const elements = [
-  { position: 6, lastname: "C@gmail.com", name: "Carbon", icon: "C6" },
-  { position: 7, lastname: "N@gmail.com", name: "Nitrogen", icon: "N7" },
-  { position: 39, lastname: "Y@gmail.com", name: "Yttrium", icon: "Y39" },
-  { position: 56, lastname: "Ba@gmail.com", name: "Barium", icon: "Ba56" },
-  { position: 58, lastname: "Ce@gmail.com", name: "Cerium", icon: "Ce58" },
+  {
+    position: 6, lastname: " ahmet.yilmaz@example.com", name: "Ahmet Yılmaz", icon: "C6"
+  },
+  {
+    position: 7, lastname: "elif.demir@example.com", name: "Elif Demir", icon: "N7"
+  },
+  { position: 39, lastname: "mehmet.kaya@example.com", name: "Mehmet Kaya", icon: "Y39" },
+  {
+    position: 56, lastname: "fatma.aydin@example.com", name: "Fatma Aydın", icon: "Ba56"
+  },
+  {
+    position: 58, lastname: "mustafa.sahin@example.com", name: "Mustafa Şahin", icon: "Ce58"
+  },
 ]
 
 const items = [

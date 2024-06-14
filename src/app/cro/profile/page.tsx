@@ -19,7 +19,7 @@ const ScProfile = (props: Props) => {
 
         {/* Main */}
         <AppShell.Main>
-          <h1>Names - Surname</h1>
+          <h1>Name - Surname</h1>
         </AppShell.Main>
       </AppShell>
     </ReqLogin>

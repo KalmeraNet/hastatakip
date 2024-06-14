@@ -46,7 +46,7 @@ const AdminCost = (props: Props) => {
   useEffect(() => {
     setData(
       elements
-        .filter((a) => a.patient.indexOf(search) != -1 || search == "")
+        .filter((a) => a.study.indexOf(search) != -1 || search == "")
         .map((element) => (
           <Table.Tr
             key={element.study}
@@ -107,7 +107,7 @@ const AdminCost = (props: Props) => {
           </Table.Tr>
         ))
     )
-  }, [search])
+  }, [open, search])
 
   return (
     <>

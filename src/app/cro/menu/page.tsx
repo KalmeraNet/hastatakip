@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react"
 import { Button, Stack, Flex, Menu, rem, Grid, Text } from "@mantine/core"
 import { IconDotsVertical, IconEdit, IconTrash } from "@tabler/icons-react"
 import { AppShell, Table } from "@mantine/core"
-import Link from "next/link"
 import CroHeader from "@/components/croHeader"
 import CroNavbar from "@/components/croNavbar"
 import { ReqLogin } from "@/components/ReqLogin"
@@ -11,11 +10,11 @@ import { ReqLogin } from "@/components/ReqLogin"
 type Props = {}
 
 const elements = [
-  { position: 6, lastname: "C@gmail.com", name: "Carbon", icon: "C6" },
-  { position: 7, lastname: "N@gmail.com", name: "Nitrogen", icon: "N7" },
-  { position: 39, lastname: "Y@gmail.com", name: "Yttrium", icon: "Y39" },
-  { position: 56, lastname: "Ba@gmail.com", name: "Barium", icon: "Ba56" },
-  { position: 58, lastname: "Ce@gmail.com", name: "Cerium", icon: "Ce58" },
+  { study: "EX2211-3748", site: "721", patient: "null", type: "Accomidation", amount: "2500", date: "12.02.24", status: "Active" },
+  { study: "EX2211-3748", site: "722", patient: "null", type: "Transportation", amount: "600", date: "02.03.24", status: "Active" },
+  { study: "EX6018-4758", site: "860", patient: "null", type: "Transportation", amount: "1800", date: "01.06.24", status: "Active" },
+  { study: "EX6018-4915", site: "8400", patient: "null", type: "FB", amount: "400", date: "24.04.24", status: "Active" },
+  { study: "EX6018-4979", site: "3700", patient: "null", type: "FB", amount: "800", date: "15.02.24", status: "Active" },
 ]
 
 const CroMenu = (props: Props) => {
@@ -24,15 +23,15 @@ const CroMenu = (props: Props) => {
   useEffect(() => {
     setData(
       elements
-        .filter((a) => a.name.indexOf(search) != -1 || search == "")
+        .filter((a) => a.patient.indexOf(search) != -1 || search == "")
         .map((element) => (
           <Table.Tr
-            key={element.name}
+            key={element.study}
             onClick={(e) => {
               alert("Please Edit")
             }}
           >
-            <Table.Td>{element.position}</Table.Td>
+            <Table.Td>{element.study}</Table.Td>
             <Table.Td>
               <div style={{ whiteSpace: "nowrap" }}>
                 <Menu position="left" offset={2} withArrow>
@@ -78,9 +77,12 @@ const CroMenu = (props: Props) => {
                 </Menu>
               </div>
             </Table.Td>
-            <Table.Td>{element.name}</Table.Td>
-            <Table.Td>{element.lastname}</Table.Td>
-            <Table.Td>{element.icon}</Table.Td>
+            <Table.Td>{element.site}</Table.Td>
+            <Table.Td>{element.patient}</Table.Td>
+            <Table.Td>{element.type}</Table.Td>
+            <Table.Td>{element.amount}</Table.Td>
+            <Table.Td>{element.date}</Table.Td>
+            <Table.Td>{element.status}</Table.Td>
           </Table.Tr>
         ))
     )
@@ -97,7 +99,7 @@ const CroMenu = (props: Props) => {
 
         {/* Main */}
         <AppShell.Main>
-          <h1>Menu</h1>
+          <h1>Dashboard</h1>
           <Grid
             style={{
               display: "flex",
@@ -108,69 +110,66 @@ const CroMenu = (props: Props) => {
               style={{
                 margin: "2rem",
                 padding: "2rem",
-                background: "linear-gradient(90deg, #077577, #a24daf)",
+                borderRadius: "15px",
+                background: "linear-gradient(90deg, #FC766AFF, #fa9288)",
               }}
               span={3}
             >
-              <Link
-                href="cost"
+              <div
                 style={{
                   color: "white",
                   textDecoration: "none",
                 }}
               >
                 <Flex direction="column">
-                  <Text size="lg">Cost</Text>
-                  <div>2</div>
-                  <div>3</div>
+                  <Text size="lg" style={{ marginBottom: "1rem" }}>Average monthly expense:</Text>
+                  <Text size="lg" fw={700}>20.000 TL</Text>
                 </Flex>
-              </Link>
+              </div>
             </Grid.Col>
             <Grid.Col
               style={{
                 margin: "2rem",
                 marginLeft: "6rem",
                 padding: "2rem",
-                background: "linear-gradient(90deg, #077710, #4daf6c)",
+                borderRadius: "15px",
+                background: "linear-gradient(90deg, #9fa3a2, #d5d5d5)",
               }}
               span={3}
             >
-              <Link
-                href="cost"
+              <div
                 style={{
                   color: "white",
                   textDecoration: "none",
                 }}
               >
                 <Flex direction="column">
-                  <Text size="lg">Cost</Text>
-                  <div>2</div>
-                  <div>3</div>
+                  <Text size="lg" style={{ marginBottom: "1rem" }}>Active patients:</Text>
+                  <Text size="lg" fw={700}>24</Text>
                 </Flex>
-              </Link>
+              </div>
             </Grid.Col>
             <Grid.Col
               style={{
                 margin: "2rem",
                 marginLeft: "6rem",
                 padding: "2rem",
-                background: "linear-gradient(90deg, #edab1d, #af4d4d)",
+                borderRadius: "15px",
+                background: "linear-gradient(90deg, #184A45FF, #336761)",
               }}
               span={3}
             >
-              <Link
-                href="cost"
+              <div
                 style={{
                   color: "white",
                   textDecoration: "none",
                 }}
               >
                 <Flex direction="column">
-                  <Text size="lg">Cost</Text>
-                  <div>2</div>
-                  <div>3</div>
+                  <Text size="lg" style={{ marginBottom: "1rem" }}>Active trials:</Text>
+                  <Text size="md" fw={700}>32</Text>
                 </Flex>
-              </Link>
+              </div>
             </Grid.Col>
           </Grid>
 
@@ -179,11 +178,14 @@ const CroMenu = (props: Props) => {
             <Table highlightOnHover styles={{ table: { width: "100%" } }}>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>Cost No</Table.Th>
+                  <Table.Th>Study Name</Table.Th>
                   <Table.Th styles={{ th: { width: 0 } }} />
-                  <Table.Th>Cost Name</Table.Th>
-                  <Table.Th>Cost Email</Table.Th>
-                  <Table.Th>Cost Code</Table.Th>
+                  <Table.Th>Site Name</Table.Th>
+                  <Table.Th>Patient Num</Table.Th>
+                  <Table.Th>Type</Table.Th>
+                  <Table.Th>Amount</Table.Th>
+                  <Table.Th>Date</Table.Th>
+                  <Table.Th>Status</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>{data}</Table.Tbody>

@@ -51,9 +51,9 @@ const ScMasraf = (props: Props) => {
           return (
             <ProjectsItem
               key={o.id}
-              id={0}
-              firstLine="Andre"
-              secondLine="#f3f3f3"
+              id={o.id ?? 0}
+              firstLine={o.name ?? ""}
+              secondLine={o.title ?? ""}
               link={"/sc/sc-cost/" + o.id}
             />
           )

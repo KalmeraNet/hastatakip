@@ -15,8 +15,7 @@ import {
 import { IconChevronLeft, IconKey, IconLogout, IconUser } from "@tabler/icons-react"
 import Link from "next/link"
 import React from "react"
-// import { signOut } from '@/auth';
-import { signOut, useSession } from "next-auth/react"
+import { signOut } from "next-auth/react"
 import { useUser } from "@/app/userContext"
 
 

@@ -15,19 +15,19 @@ type Props = {
 const arr: Props[] = [
   {
     id: 1,
-    color: "linear-gradient(90deg, #077577, #a24daf)",
+    color: "linear-gradient(90deg,  #FC766AFF, #fa9288)",
     text: "Site Coordinator Cost",
     link: "/sc/sc-cost",
   },
   {
     id: 2,
-    color: "linear-gradient(90deg, #077710, #4daf6c)",
+    color: "linear-gradient(90deg, #9fa3a2, #d5d5d5)",
     text: "Patient Cost",
     link: "/sc/patient-cost",
   },
   {
     id: 3,
-    color: "linear-gradient(90deg, #edab1d, #af4d4d)",
+    color: "linear-gradient(90deg, #184A45FF, #336761)",
     text: "Center Cost",
     link: "/sc/center-cost",
   },
